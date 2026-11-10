@@ -1,270 +1,126 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#080f20" />
-    <meta name="description" content="Botsy Studios builds custom Discord systems, bots, integrations and modern web experiences." />
-    <title>Botsy Studios — Building Digital Experiences That Matter</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>
-      :root {
-        color-scheme: dark;
-        --bg: #080f20;
-        --surface: #0d1830;
-        --surface-raised: #101f3b;
-        --line: rgba(159, 185, 231, .14);
-        --text: #fff;
-        --muted: #a4b1c9;
-        --blue: #1677ff;
-        --cyan: #54c8ff;
-        --max: 1160px;
-        font-family: "DM Sans", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        font-synthesis: none;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-      }
-      *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-      body { margin: 0; min-width: 320px; background: var(--bg); }
-      a { color: inherit; text-decoration: none; }
-      button { font: inherit; }
-      .wrap { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
-      .site-header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid rgba(159,185,231,.1); background: rgba(8,15,32,.82); backdrop-filter: blur(18px); }
-      .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-      .brand { display: inline-flex; align-items: center; gap: 11px; font-family: "Space Grotesk", sans-serif; font-size: 1.08rem; font-weight: 700; letter-spacing: -.03em; }
-      .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; color: white; font-size: 1.05rem; background: linear-gradient(145deg, #38a0ff, #1454e8); box-shadow: 0 7px 25px rgba(22,119,255,.32); }
-      .brand span:last-child span { color: #78b7ff; }
-      .nav-links { display: flex; align-items: center; gap: 29px; color: #c4cee0; font-size: .9rem; }
-      .nav-links a:hover, .footer-links a:hover { color: white; }
-      .nav-cta, .button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; border: 1px solid transparent; border-radius: 9px; font-size: .9rem; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
-      .nav-cta, .button-primary { color: white; background: linear-gradient(115deg, #1677ff, #2460e9); box-shadow: 0 8px 26px rgba(22,119,255,.2); }
-      .nav-cta:hover, .button:hover { transform: translateY(-2px); }
-      .button-secondary { border-color: var(--line); background: rgba(255,255,255,.035); }
-      .button-secondary:hover { border-color: rgba(115,174,255,.55); background: rgba(22,119,255,.1); }
-      .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 9px; color: white; background: var(--surface); cursor: pointer; }
-      .hero { position: relative; overflow: hidden; padding: 116px 0 104px; }
-      .hero::before { position: absolute; z-index: -1; top: -210px; right: -100px; width: 710px; height: 710px; border-radius: 50%; background: radial-gradient(circle, rgba(22,119,255,.2), rgba(22,119,255,0) 68%); content: ""; }
-      .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 65px; }
-      .kicker { display: inline-flex; align-items: center; gap: 9px; color: #95c7ff; font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-      .kicker::before { width: 22px; height: 1px; background: var(--blue); content: ""; }
-      h1, h2, h3, p { margin-top: 0; }
-      h1, h2, h3 { font-family: "Space Grotesk", sans-serif; }
-      h1 { max-width: 720px; margin: 22px 0; font-size: clamp(3.2rem, 7.3vw, 6.1rem); line-height: .99; letter-spacing: -.075em; }
-      .gradient-text { color: transparent; background: linear-gradient(95deg, #fff 5%, #78b9ff 72%, #48d2ff); background-clip: text; -webkit-background-clip: text; }
-      .hero-copy { max-width: 570px; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
-      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-      .values { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 36px; color: #8797b2; font-size: .7rem; font-weight: 700; letter-spacing: .15em; }
-      .values span + span::before { margin-right: 13px; color: #347fff; content: "•"; }
-      .visual { position: relative; min-height: 395px; display: grid; place-items: center; }
-      .orbit { position: absolute; width: min(100%, 410px); aspect-ratio: 1; border: 1px solid rgba(91,151,255,.17); border-radius: 50%; transform: rotate(-24deg) scaleY(.78); }
-      .orbit::before, .orbit::after { position: absolute; border: 1px solid rgba(91,151,255,.13); border-radius: 50%; content: ""; }
-      .orbit::before { inset: 34px -28px; }
-      .orbit::after { inset: -31px 48px; }
-      .glow { position: absolute; width: 255px; height: 255px; border-radius: 50%; background: rgba(22,119,255,.18); filter: blur(65px); }
-      .showcase { position: relative; width: min(100%, 360px); padding: 23px; border: 1px solid rgba(155,191,255,.22); border-radius: 22px; background: linear-gradient(145deg, rgba(23,52,93,.86), rgba(10,21,43,.94)); box-shadow: 0 30px 90px rgba(0,0,0,.4); transform: rotate(2deg); }
-      .showcase-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid var(--line); color: #dce8ff; font-size: .8rem; font-weight: 700; }
-      .status { display: inline-flex; align-items: center; gap: 7px; color: #8de5bc; font-size: .68rem; }
-      .status::before { width: 7px; height: 7px; border-radius: 50%; background: #54d89a; box-shadow: 0 0 12px #54d89a; content: ""; }
-      .bot-icon { width: 56px; height: 56px; display: grid; place-items: center; margin: 24px 0 17px; border: 1px solid rgba(95,164,255,.25); border-radius: 16px; color: #9acaff; font-size: 1.55rem; background: rgba(22,119,255,.16); }
-      .showcase h3 { margin-bottom: 7px; font-size: 1.3rem; }
-      .showcase p { margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.65; }
-      .mini-bars { display: grid; gap: 9px; margin-top: 24px; }
-      .mini-bars i { height: 7px; border-radius: 99px; background: linear-gradient(90deg, rgba(49,135,255,.75), rgba(49,135,255,.09)); }
-      .mini-bars i:nth-child(2) { width: 76%; opacity: .7; }
-      .mini-bars i:nth-child(3) { width: 54%; opacity: .45; }
-      .section { padding: 94px 0; }
-      .section-alt { border-block: 1px solid rgba(159,185,231,.08); background: linear-gradient(180deg, rgba(15,29,55,.52), rgba(8,15,32,.35)); }
-      .section-head { max-width: 690px; margin-bottom: 43px; }
-      .section-head h2 { margin: 15px 0; font-size: clamp(2.15rem, 4vw, 3.35rem); line-height: 1.1; letter-spacing: -.055em; }
-      .section-head p { margin-bottom: 0; color: var(--muted); line-height: 1.75; }
-      .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-      .card { min-height: 220px; padding: 25px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, rgba(16,31,59,.85), rgba(11,22,43,.82)); transition: transform .22s ease, border-color .22s ease; }
-      .card:hover { transform: translateY(-4px); border-color: rgba(77,151,255,.48); }
-      .card-icon { width: 43px; height: 43px; display: grid; place-items: center; margin-bottom: 22px; border: 1px solid rgba(65,143,255,.2); border-radius: 12px; color: #85beff; background: rgba(22,119,255,.11); font-size: 1.15rem; }
-      .card h3 { margin-bottom: 10px; font-size: 1.08rem; }
-      .card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.7; }
-      .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: start; }
-      .about-grid .section-head { margin: 0; }
-      .about-copy { color: var(--muted); line-height: 1.85; }
-      .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin-top: 25px; }
-      .principle { padding: 17px; border: 1px solid var(--line); border-radius: 11px; background: rgba(16,31,59,.55); }
-      .principle strong { display: block; margin-bottom: 6px; color: white; font-family: "Space Grotesk", sans-serif; }
-      .principle span { color: var(--muted); font-size: .83rem; line-height: 1.55; }
-      .projects { display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px; }
-      .project-card { min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 27px; border: 1px solid var(--line); border-radius: 15px; background: radial-gradient(ellipse at 90% 15%, rgba(22,119,255,.21), transparent 40%), linear-gradient(145deg, #102143, #0b152a); }
-      .project-card:nth-child(2) { background: radial-gradient(ellipse at 80% 10%, rgba(57,186,255,.15), transparent 42%), linear-gradient(145deg, #10213a, #0b152a); }
-      .project-label { color: #91bfff; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
-      .project-card h3 { margin: 15px 0 8px; font-size: 1.45rem; }
-      .project-card p { max-width: 440px; margin: 0; color: var(--muted); line-height: 1.65; }
-      .project-foot { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 35px; color: #aab8cf; font-size: .78rem; }
-      .tag { padding: 7px 10px; border: 1px solid rgba(159,185,231,.18); border-radius: 999px; background: rgba(8,15,32,.35); }
-      .team-note { margin-top: 18px; color: var(--muted); font-size: .88rem; }
-      .faq-list { display: grid; gap: 11px; max-width: 850px; }
-      details { border: 1px solid var(--line); border-radius: 11px; background: rgba(16,31,59,.55); }
-      summary { position: relative; padding: 19px 52px 19px 20px; cursor: pointer; list-style: none; font-weight: 600; }
-      summary::-webkit-details-marker { display: none; }
-      summary::after { position: absolute; top: 50%; right: 20px; color: #7eb8ff; content: "+"; font-size: 1.3rem; transform: translateY(-50%); }
-      details[open] summary::after { content: "−"; }
-      details p { margin: 0; padding: 0 20px 20px; color: var(--muted); line-height: 1.7; }
-      .contact-panel { position: relative; overflow: hidden; padding: clamp(28px, 6vw, 57px); border: 1px solid rgba(84,157,255,.3); border-radius: 19px; background: radial-gradient(ellipse at 100% 0, rgba(22,119,255,.23), transparent 45%), linear-gradient(120deg, #102143, #0b152a); }
-      .contact-panel h2 { max-width: 660px; margin: 15px 0; font-size: clamp(2.2rem, 5vw, 3.7rem); line-height: 1.08; letter-spacing: -.06em; }
-      .contact-panel p { max-width: 600px; color: var(--muted); line-height: 1.75; }
-      .contact-panel .button { margin-top: 12px; }
-      .contact-note { margin: 18px 0 0 !important; color: #91a1bb !important; font-size: .8rem; }
-      footer { padding: 28px 0; border-top: 1px solid rgba(159,185,231,.1); }
-      .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #8795ad; font-size: .82rem; }
-      .footer-links { display: flex; gap: 20px; }
-      .reveal { animation: rise .75s both; }
-      @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-      @media (max-width: 850px) {
-        .hero-grid { grid-template-columns: 1fr; gap: 15px; }
-        .hero { padding: 86px 0 65px; }
-        .visual { min-height: 355px; }
-        .about-grid { grid-template-columns: 1fr; gap: 30px; }
-        .cards { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (max-width: 650px) {
-        .wrap { width: min(var(--max), calc(100% - 34px)); }
-        .nav { min-height: 68px; }
-        .menu-toggle { display: inline-grid; place-items: center; }
-        .nav-cta { display: none; }
-        .nav-links { position: absolute; top: 68px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 17px 17px; border-bottom: 1px solid var(--line); background: rgba(8,15,32,.98); }
-        .nav-links.open { display: flex; flex-direction: column; }
-        .nav-links a { padding: 13px 5px; }
-        .hero { padding-top: 73px; }
-        h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
-        .hero-copy { font-size: 1rem; }
-        .visual { min-height: 320px; }
-        .showcase { width: min(100%, 330px); }
-        .section { padding: 70px 0; }
-        .cards, .projects { grid-template-columns: 1fr; }
-        .card { min-height: auto; }
-        .principles { grid-template-columns: 1fr; }
-        .footer-row { align-items: flex-start; flex-direction: column; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="wrap nav">
-        <a class="brand" href="#home" aria-label="Botsy Studios home"><span class="brand-mark" aria-hidden="true">B</span><span>Botsy <span>Studios</span></span></a>
-        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation">☰</button>
-        <nav class="nav-links" id="navigation" aria-label="Main navigation">
-          <a href="#services">Services</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#team">Team</a><a href="#faq">FAQ</a>
-        </nav>
-        <a class="nav-cta" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
-      </div>
-    </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07101f">
+  <meta name="description" content="Botsy Studios creates custom Discord bots, server systems and digital solutions. Your vision. Our creation.">
+  <meta property="og:title" content="Botsy Studios — Your vision. Our creation.">
+  <meta property="og:description" content="Custom Discord bots, server systems and digital solutions built around your community.">
+  <meta property="og:type" content="website">
+  <title>Botsy Studios — Your vision. Our creation.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#070f1e;--panel:#0d1a30;--panel2:#10213d;--line:rgba(157,190,239,.14);--text:#f5f8ff;--muted:#a6b5cc;--blue:#2583ff;--cyan:#55d5ff;--max:1160px;font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;min-width:320px;background:radial-gradient(ellipse at 80% 0,rgba(24,91,184,.12),transparent 36%),var(--bg)}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+    .header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(7,15,30,.86);backdrop-filter:blur(18px)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:inline-flex;align-items:center;gap:11px;font:700 1.05rem "Space Grotesk",sans-serif;letter-spacing:-.04em}.brand-mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(144,197,255,.45);border-radius:12px;background:linear-gradient(145deg,#39a5ff,#1552d8);box-shadow:0 7px 28px #1677ff44;color:white;font-size:1.15rem}.brand-name span{color:#79baff}.links{display:flex;align-items:center;gap:26px;color:#c1cde0;font-size:.88rem}.links a:hover,.footer-links a:hover{color:white}.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 19px;border:1px solid transparent;border-radius:10px;font-weight:700;font-size:.9rem;transition:.2s ease;cursor:pointer}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(110deg,#1680ff,#285ce6);color:white;box-shadow:0 9px 27px #1677ff33}.secondary{border-color:var(--line);background:#ffffff08}.secondary:hover{border-color:#5c9cff88;background:#1677ff18}.menu{display:none;width:43px;height:43px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:white}
+    .hero{position:relative;overflow:hidden;padding:112px 0 92px}.hero:before{position:absolute;content:"";width:650px;height:650px;right:-190px;top:-280px;border-radius:50%;background:radial-gradient(circle,#1677ff35,transparent 68%);pointer-events:none}.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:55px}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#8fc4ff;font-size:.73rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase}.eyebrow:before{content:"";width:23px;height:1px;background:var(--blue)}h1,h2,h3{font-family:"Space Grotesk",sans-serif}h1{margin:21px 0;font-size:clamp(3.3rem,7.5vw,6.3rem);line-height:.98;letter-spacing:-.078em}.gradient{color:transparent;background:linear-gradient(100deg,#fff 12%,#8dc5ff 68%,#4bd6ff);background-clip:text;-webkit-background-clip:text}.hero p{max-width:570px;color:var(--muted);font-size:1.08rem;line-height:1.8}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.micro{display:flex;flex-wrap:wrap;gap:15px;margin-top:32px;color:#8295b2;font-size:.68rem;font-weight:700;letter-spacing:.14em}.micro span+span:before{content:"•";margin-right:15px;color:#4e9dff}
+    .visual{position:relative;min-height:400px;display:grid;place-items:center}.orbit{position:absolute;width:min(100%,405px);aspect-ratio:1;border:1px solid #6aa8ff26;border-radius:50%;transform:rotate(-25deg) scaleY(.78)}.orbit:before,.orbit:after{position:absolute;inset:28px -28px;border:1px solid #6aa8ff1b;border-radius:50%;content:""}.orbit:after{inset:-26px 48px}.halo{position:absolute;width:250px;height:250px;border-radius:50%;background:#1677ff38;filter:blur(65px)}.mock{position:relative;width:min(100%,355px);padding:24px;border:1px solid #9bc5ff38;border-radius:22px;background:linear-gradient(145deg,#18365c,#0b172c);box-shadow:0 30px 90px #0008;transform:rotate(2deg)}.mock-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);font-size:.72rem;font-weight:700;color:#dceaff}.live{color:#8ee3ba;font-size:.68rem}.live:before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:#53d99a;box-shadow:0 0 10px #53d99a}.mock-icon{width:58px;height:58px;display:grid;place-items:center;margin:25px 0 17px;border:1px solid #64aaff55;border-radius:17px;background:#1677ff25;color:#a8d1ff;font:700 1.6rem "Space Grotesk"}.mock h3{margin:0 0 8px;font-size:1.35rem}.mock p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.7}.bars{display:grid;gap:9px;margin-top:24px}.bars i{height:7px;border-radius:20px;background:linear-gradient(90deg,#318dffb0,#318dff12)}.bars i:nth-child(2){width:75%;opacity:.7}.bars i:nth-child(3){width:52%;opacity:.45}
+    .section{padding:88px 0}.alt{border-block:1px solid #9dbbe713;background:linear-gradient(180deg,#10213d70,#07101e55)}.section-head{max-width:700px;margin-bottom:40px}.section-head h2{margin:14px 0;font-size:clamp(2.15rem,4.3vw,3.5rem);line-height:1.08;letter-spacing:-.06em}.section-head p{margin:0;color:var(--muted);line-height:1.8}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{min-height:215px;padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213ddd,#0a172bdf);transition:.22s ease}.card:hover{transform:translateY(-4px);border-color:#5a9eff77}.icon{width:44px;height:44px;display:grid;place-items:center;margin-bottom:22px;border:1px solid #398dff44;border-radius:12px;background:#1677ff1b;color:#9acaff;font-size:1.2rem}.card h3{margin:0 0 10px;font-size:1.08rem}.card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
+    .split{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}.copy{color:var(--muted);line-height:1.9}.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:23px}.value{padding:17px;border:1px solid var(--line);border-radius:12px;background:#10213d88}.value strong{display:block;margin-bottom:6px;color:white;font-family:"Space Grotesk"}.value span{color:var(--muted);font-size:.82rem;line-height:1.6}
+    .project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.project{min-height:220px;display:flex;flex-direction:column;justify-content:space-between;padding:26px;border:1px solid var(--line);border-radius:15px;background:radial-gradient(ellipse at 90% 5%,#1677ff30,transparent 44%),linear-gradient(145deg,#122747,#0b172b)}.project-label{color:#8fc4ff;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.project h3{margin:15px 0 8px;font-size:1.35rem}.project p{max-width:450px;margin:0;color:var(--muted);line-height:1.7}.project small{margin-top:28px;color:#91a5c2}
+    .leadership{display:grid;grid-template-columns:1fr 1fr;gap:16px}.leader-card{padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213d,#0a172b)}.leader-card .icon{margin-bottom:18px}.leader-card h3{margin:0 0 8px}.leader-card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.7}
+    .review-box{padding:30px;border:1px dashed #6a9bd75c;border-radius:15px;background:#10213d55;color:var(--muted);line-height:1.8}.review-box strong{display:block;margin-bottom:7px;color:white;font-family:"Space Grotesk";font-size:1.05rem}
+    .community{display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px;padding:32px;border:1px solid #4e9aff55;border-radius:18px;background:radial-gradient(ellipse at 100% 0,#1677ff35,transparent 50%),linear-gradient(120deg,#112748,#0a172b)}.community h2{margin:12px 0;font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.05em}.community p{max-width:650px;margin:0;color:var(--muted);line-height:1.75}
+    .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:35px;align-items:start}.contact-copy p{color:var(--muted);line-height:1.8}.contact-form{display:grid;gap:13px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#10213dbb}.field{display:grid;gap:7px}.field label{font-size:.82rem;font-weight:600;color:#dce8fb}.field input,.field select,.field textarea{width:100%;padding:12px 13px;border:1px solid #9dbbe72b;border-radius:9px;outline:none;background:#081427;color:white}.field input:focus,.field select:focus,.field textarea:focus{border-color:#4d9bff}.field textarea{min-height:115px;resize:vertical}.form-note{margin:0;color:#8fa2bf;font-size:.76rem;line-height:1.6}.form-status{min-height:20px;color:#9bd0ff;font-size:.83rem}
+    footer{padding:27px 0;border-top:1px solid var(--line)}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#8293ad;font-size:.8rem}.footer-links{display:flex;gap:18px}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:10px}.hero{padding:85px 0 65px}.visual{min-height:350px}.split{grid-template-columns:1fr;gap:25px}.cards{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}}
+    @media(max-width:640px){.wrap{width:calc(100% - 34px)}.nav{min-height:68px}.menu{display:grid;place-items:center}.links{position:absolute;top:68px;left:0;right:0;display:none;align-items:stretch;gap:0;padding:8px 17px 17px;border-bottom:1px solid var(--line);background:#07101efc}.links.open{display:flex;flex-direction:column}.links a{padding:12px 4px}.nav>.nav-cta{display:none}.hero{padding-top:68px}h1{font-size:clamp(3rem,15vw,4.7rem)}.hero p{font-size:1rem}.visual{min-height:315px}.section{padding:68px 0}.cards,.project-grid,.leadership{grid-template-columns:1fr}.card{min-height:0}.values{grid-template-columns:1fr}.community{grid-template-columns:1fr}.footer-row{align-items:flex-start;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+<header class="header"><div class="wrap nav">
+  <a class="brand" href="#home" aria-label="Botsy Studios home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a>
+  <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <nav class="links" id="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#community">Community</a><a href="#contact">Contact</a></nav>
+  <a class="btn primary nav-cta" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Join our Discord ↗</a>
+</div></header>
+<main>
+  <section class="hero" id="home"><div class="wrap hero-grid">
+    <div><div class="eyebrow">Discord development · Digital solutions</div>
+      <h1><span class="gradient">Your vision.<br>Our creation.</span></h1>
+      <p>We turn ideas into polished digital experiences. From custom Discord bots to complete server systems, Botsy Studios builds solutions designed around your community.</p>
+      <div class="actions"><a class="btn primary" href="#contact">Start a project ↗</a><a class="btn secondary" href="#services">Explore services ↓</a></div>
+      <div class="micro"><span>CREATIVE THINKING</span><span>CUSTOM BUILDS</span><span>COMMUNITY FIRST</span></div>
+    </div>
+    <div class="visual" role="img" aria-label="Abstract Botsy Studios digital systems artwork"><div class="orbit"></div><div class="halo"></div><div class="mock">
+      <div class="mock-top"><span>BOTSY / STUDIO</span><span class="live">CREATING</span></div><div class="mock-icon">B.</div><h3>Built around your vision.</h3><p>Custom technology, thoughtful design and digital systems that work for your community.</p><div class="bars" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div></div>
+  </div></section>
 
-    <main>
-      <section class="hero" id="home">
-        <div class="wrap hero-grid">
-          <div class="reveal">
-            <div class="kicker">Innovation · Development · Excellence</div>
-            <h1><span class="gradient-text">Building Digital Experiences That Matter.</span></h1>
-            <p class="hero-copy">Welcome to Botsy Studios. From custom Discord solutions to modern digital experiences, we turn ideas into functional, reliable and thoughtful products.</p>
-            <div class="hero-actions"><a class="button button-primary" href="#services">Explore our services <span aria-hidden="true">↓</span></a><a class="button button-secondary" href="#projects">See what we build <span aria-hidden="true">↗</span></a></div>
-            <div class="values"><span>INNOVATION</span><span>DEVELOPMENT</span><span>EXCELLENCE</span></div>
-          </div>
-          <div class="visual" aria-label="Botsy Studios digital solutions illustration" role="img">
-            <div class="orbit"></div><div class="glow"></div>
-            <div class="showcase">
-              <div class="showcase-top"><span>BOTSY / DIGITAL SYSTEMS</span><span class="status">Built with purpose</span></div>
-              <div class="bot-icon" aria-hidden="true">✳</div>
-              <h3>Ideas into impact.</h3>
-              <p>Purpose-built tools and experiences designed around the people who use them.</p>
-              <div class="mini-bars" aria-hidden="true"><i></i><i></i><i></i></div>
-            </div>
-          </div>
-        </div>
-      </section>
+  <section class="section alt" id="services"><div class="wrap">
+    <div class="section-head"><div class="eyebrow">What we do</div><h2>Solutions built for the way you work.</h2><p>Practical, custom-built services for Discord communities and businesses looking to create a better digital experience.</p></div>
+    <div class="cards">
+      <article class="card"><div class="icon">⌘</div><h3>Discord Bot Development</h3><p>Custom Discord bots designed around your requirements, workflows and community needs.</p></article>
+      <article class="card"><div class="icon">◈</div><h3>Server Setup & Management</h3><p>Structured server setups, role systems, channels and management workflows for organized communities.</p></article>
+      <article class="card"><div class="icon">⟷</div><h3>Custom Discord Systems</h3><p>Purpose-built systems and features that help your server run smoothly and efficiently.</p></article>
+    </div>
+  </div></section>
 
-      <section class="section section-alt" id="services">
-        <div class="wrap">
-          <div class="section-head"><div class="kicker">What we do</div><h2>Digital solutions, made for your community.</h2><p>We bring product thinking and practical development together to help teams build better online experiences.</p></div>
-          <div class="cards">
-            <article class="card"><div class="card-icon" aria-hidden="true">⌘</div><h3>Discord Bot Development</h3><p>Custom bots that streamline workflows, bring communities to life and fit the way your server works.</p></article>
-            <article class="card"><div class="card-icon" aria-hidden="true">◈</div><h3>Server Management Systems</h3><p>Thoughtful moderation, onboarding and management tools that help keep communities organized.</p></article>
-            <article class="card"><div class="card-icon" aria-hidden="true">⟷</div><h3>Custom Integrations</h3><p>Connect Discord with the services and processes your community or team already relies on.</p></article>
-            <article class="card"><div class="card-icon" aria-hidden="true">▣</div><h3>Website Development</h3><p>Responsive, accessible websites that communicate clearly and look great across devices.</p></article>
-            <article class="card"><div class="card-icon" aria-hidden="true">✳</div><h3>Digital Solutions</h3><p>From early idea to launch, we shape useful digital products around real needs and goals.</p></article>
-            <article class="card"><div class="card-icon" aria-hidden="true">↗</div><h3>Built around your needs</h3><p>Have a different challenge? Tell us what you’re trying to solve and we’ll explore the right approach.</p></article>
-          </div>
-        </div>
-      </section>
+  <section class="section" id="portfolio"><div class="wrap">
+    <div class="section-head"><div class="eyebrow">Our portfolio</div><h2>Made with purpose. Built with care.</h2><p>We’re preparing our public project showcase. This section will feature selected Botsy Studios work as projects are approved for publication.</p></div>
+    <div class="project-grid">
+      <article class="project"><div><div class="project-label">Discord bot development</div><h3>Custom bot solutions</h3><p>Tailored bot features and automation designed around each community’s needs.</p></div><small>Project showcase coming soon</small></article>
+      <article class="project"><div><div class="project-label">Server systems</div><h3>Community infrastructure</h3><p>Organized server structures and custom management systems for growing communities.</p></div><small>Project showcase coming soon</small></article>
+    </div>
+  </div></section>
 
-      <section class="section" id="projects">
-        <div class="wrap">
-          <div class="section-head"><div class="kicker">Selected work</div><h2>Good work starts with a good idea.</h2><p>We’re building our public project portfolio. Here’s the kind of work we’re focused on.</p></div>
-          <div class="projects">
-            <article class="project-card"><div><div class="project-label">Discord · Automation</div><h3>Community systems</h3><p>Custom bot features and server workflows that make community experiences easier to manage and more engaging.</p></div><div class="project-foot"><span>Project details coming soon</span><span class="tag">Discord development</span></div></article>
-            <article class="project-card"><div><div class="project-label">Web · Digital experiences</div><h3>Modern web builds</h3><p>Responsive web experiences designed to make a strong first impression and work beautifully on every screen.</p></div><div class="project-foot"><span>Project details coming soon</span><span class="tag">Web development</span></div></article>
-          </div>
-        </div>
-      </section>
+  <section class="section alt" id="about"><div class="wrap split">
+    <div class="section-head"><div class="eyebrow">About Botsy Studios</div><h2>Ideas deserve more than ordinary solutions.</h2></div>
+    <div class="copy"><p>Botsy Studios is a digital development studio focused on Discord bot development, server setup and custom Discord systems. We work with communities and businesses to turn their ideas into useful, well-designed solutions.</p><p>Our approach is built on understanding what each project needs, communicating clearly and creating systems that are practical to use.</p>
+      <div class="values"><div class="value"><strong>Purposeful</strong><span>Solutions shaped around real requirements.</span></div><div class="value"><strong>Reliable</strong><span>Careful implementation and clear communication.</span></div><div class="value"><strong>Collaborative</strong><span>Working with clients from idea to delivery.</span></div><div class="value"><strong>Progressive</strong><span>Always learning and improving what we build.</span></div></div>
+    </div>
+  </div></section>
 
-      <section class="section section-alt" id="about">
-        <div class="wrap about-grid">
-          <div class="section-head"><div class="kicker">About Botsy Studios</div><h2>Technology should make things better.</h2></div>
-          <div class="about-copy"><p>Botsy Studios is a technology and digital development studio focused on useful, reliable solutions. We bring together custom Discord systems, bot development, integrations and modern web experiences under one roof.</p><p>Our goal is to help people turn ambitious ideas into polished digital products—with clear communication, considered design and dependable development at every step.</p>
-            <div class="principles"><div class="principle"><strong>Purposeful</strong><span>We start by understanding the people and problem behind each project.</span></div><div class="principle"><strong>Reliable</strong><span>We value clear expectations, thoughtful implementation and quality.</span></div><div class="principle"><strong>Collaborative</strong><span>Good outcomes come from listening and working closely together.</span></div><div class="principle"><strong>Always improving</strong><span>We keep learning and refining how we build digital experiences.</span></div></div>
-          </div>
-        </div>
-      </section>
+  <section class="section" id="team"><div class="wrap">
+    <div class="section-head"><div class="eyebrow">The people behind Botsy</div><h2>Leadership & management.</h2><p>Our leadership structure keeps projects coordinated and the studio moving forward.</p></div>
+    <div class="leadership">
+      <article class="leader-card"><div class="icon">✦</div><h3>Ownership</h3><p>Sets the studio’s direction, oversees key decisions and guides the long-term vision of Botsy Studios.</p></article>
+      <article class="leader-card"><div class="icon">◈</div><h3>Management</h3><p>Coordinates operations, supports project delivery and helps maintain a consistent client experience.</p></article>
+    </div>
+  </div></section>
 
-      <section class="section" id="team">
-        <div class="wrap">
-          <div class="section-head"><div class="kicker">The people behind it</div><h2>A small studio with a big focus.</h2><p>Botsy Studios is growing. We’ll introduce the team here as we share more about the people and skills behind the studio.</p></div>
-          <p class="team-note">Want to work with us? <a href="#contact" style="color:#91bfff">Tell us about your project ↗</a></p>
-        </div>
-      </section>
+  <section class="section alt" id="reviews"><div class="wrap">
+    <div class="section-head"><div class="eyebrow">Client feedback</div><h2>Trust is built through good work.</h2><p>We want every review to reflect a real customer experience.</p></div>
+    <div class="review-box"><strong>Customer reviews are coming soon.</strong>Once clients have shared feedback that we have permission to publish, their genuine testimonials will appear here. We don’t use invented reviews or ratings.</div>
+  </div></section>
 
-      <section class="section section-alt" id="faq">
-        <div class="wrap">
-          <div class="section-head"><div class="kicker">Questions</div><h2>A few things you might be wondering.</h2></div>
-          <div class="faq-list">
-            <details><summary>What kind of projects does Botsy Studios take on?</summary><p>We focus on custom Discord bots and server systems, Discord integrations, website development and related digital solutions. Share your idea and we can discuss whether it’s a good fit.</p></details>
-            <details><summary>How do I request a project or get a quote?</summary><p>Use the project enquiry option below to get in touch through our Discord support server. Tell us what you need, your goals and any important timing or requirements so we can understand the project.</p></details>
-            <details><summary>How are project scope and pricing decided?</summary><p>Pricing depends on the requirements, complexity and scope. We’ll discuss the details with you before work begins so expectations can be agreed clearly.</p></details>
-            <details><summary>Can you work on an idea that isn’t listed here?</summary><p>Yes. The services above are a starting point. If you have a digital challenge or a custom idea, get in touch and tell us what you’re aiming to achieve.</p></details>
-            <details><summary>Do you have a client dashboard or live project tracker?</summary><p>Not at the moment. Project updates and communication are handled directly with the team; dashboard features may be introduced in the future.</p></details>
-          </div>
-        </div>
-      </section>
+  <section class="section" id="community"><div class="wrap"><div class="community">
+    <div><div class="eyebrow">Join the community</div><h2>Connect with Botsy Studios.</h2><p>Visit our Discord server to learn more, talk with the team, ask questions or open a ticket for your project.</p></div>
+    <a class="btn primary" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Join Discord ↗</a>
+  </div></div></section>
 
-      <section class="section" id="contact">
-        <div class="wrap">
-          <div class="contact-panel"><div class="kicker">Have an idea?</div><h2>Let’s build something that matters.</h2><p>Tell us what you’re working on, what you need and what success looks like. We’ll take it from there.</p><a class="button button-primary" href="https://discord.com/" target="_blank" rel="noopener noreferrer">Contact us on Discord <span aria-hidden="true">↗</span></a><p class="contact-note">The official Botsy Studios server invite will be added here when available. This button currently opens Discord.</p></div>
-        </div>
-      </section>
-    </main>
-
-    <footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">B</span><span>Botsy <span>Studios</span></span></a><span>© <span id="year"></span> Botsy Studios. Built with purpose.</span><div class="footer-links"><a href="#services">Services</a><a href="#contact">Contact</a></div></div></footer>
-    <script>
-      const toggle = document.querySelector('.menu-toggle');
-      const navigation = document.querySelector('.nav-links');
-      toggle.addEventListener('click', () => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-        toggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
-        navigation.classList.toggle('open', !isOpen);
-      });
-      navigation.addEventListener('click', (event) => {
-        if (event.target.closest('a')) {
-          navigation.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.setAttribute('aria-label', 'Open navigation');
-        }
-      });
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+  <section class="section alt" id="contact"><div class="wrap contact-grid">
+    <div class="contact-copy"><div class="eyebrow">Start a project</div><h2 style="font:700 clamp(2.2rem,4vw,3.2rem) 'Space Grotesk';letter-spacing:-.06em;margin:14px 0">Tell us what you have in mind.</h2><p>Share a few details below. We’ll prepare your enquiry so you can send it to our team through a Discord ticket.</p><p>Prefer to go straight to Discord? <a href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer" style="color:#91c5ff">Join the server here ↗</a></p></div>
+    <form class="contact-form" id="enquiry-form">
+      <div class="field"><label for="service">What do you need?</label><select id="service" required><option value="">Select a service</option><option>Discord bot development</option><option>Discord server setup and management</option><option>Custom Discord systems</option><option>Other enquiry</option></select></div>
+      <div class="field"><label for="project">Tell us about your project</label><textarea id="project" required maxlength="1200" placeholder="Describe your idea, requirements or questions..."></textarea></div>
+      <button class="btn primary" type="submit">Prepare Discord enquiry ↗</button>
+      <p class="form-note">This form does not send or store your details. It prepares a message for you to copy, then opens our Discord invite so you can submit it in a ticket.</p>
+      <p class="form-status" id="form-status" aria-live="polite"></p>
+    </form>
+  </div></section>
+</main>
+<footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a><span>© <span id="year"></span> Botsy Studios. Your vision. Our creation.</span><div class="footer-links"><a href="#services">Services</a><a href="#contact">Contact</a><a href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Discord ↗</a></div></div></footer>
+<script>
+  const menuButton=document.querySelector('.menu');
+  const navLinks=document.querySelector('.links');
+  menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');navLinks.classList.toggle('open',!open)});
+  navLinks.addEventListener('click',event=>{if(event.target.closest('a')){navLinks.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open menu')}});
+  document.getElementById('year').textContent=new Date().getFullYear();
+  document.getElementById('enquiry-form').addEventListener('submit',async event=>{
+    event.preventDefault();
+    const service=document.getElementById('service').value;
+    const project=document.getElementById('project').value.trim();
+    const message='Botsy Studios Project Enquiry\nService: '+service+'\nProject details: '+project;
+    const status=document.getElementById('form-status');
+    try{await navigator.clipboard.writeText(message);status.textContent='Enquiry copied. Paste it into a ticket after joining the Discord server.'}
+    catch(error){status.textContent='Your enquiry is ready. Copy the service and project details above, then paste them into a Discord ticket.'}
+    window.open('https://discord.gg/PQXCjgDQSe','_blank','noopener,noreferrer');
+  });
+</script>
+</body>
 </html>
