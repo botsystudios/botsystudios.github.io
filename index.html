@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10131c" />
+    <meta name="description" content="The personal website of TheRealShubz." />
+    <title>TheRealShubz — Home</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #10131c;
+        color: #f4f6fb;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      * { box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background: radial-gradient(ellipse at 50% 0%, #202c49 0, #10131c 58%);
+      }
+      main { width: min(100%, 720px); }
+      .eyebrow {
+        color: #9eb4ff;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+      h1 { margin: 1rem 0; font-size: clamp(2.8rem, 9vw, 5.5rem); line-height: 1; letter-spacing: -.06em; }
+      p { max-width: 560px; color: #b7bfd1; font-size: clamp(1.05rem, 2.5vw, 1.2rem); line-height: 1.75; }
+      nav { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: .7rem 1rem;
+        border: 1px solid #39435c;
+        border-radius: 999px;
+        color: #f4f6fb;
+        text-decoration: none;
+        transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      }
+      a:hover { transform: translateY(-2px); border-color: #9eb4ff; background: #202c49; }
+      a:focus-visible { outline: 3px solid #9eb4ff; outline-offset: 3px; }
+      footer { margin-top: 5rem; color: #7f899e; font-size: .9rem; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">Personal site</div>
+      <h1>Hey, I’m TheRealShubz.</h1>
+      <p>Welcome to my corner of the web. This site is just getting started—check back soon to see what I’m working on.</p>
+      <nav aria-label="Social links">
+        <a href="https://github.com/TheRealShubz" rel="me">Find me on GitHub ↗</a>
+      </nav>
+      <footer>Built with GitHub Pages.</footer>
+    </main>
+  </body>
+</html>
