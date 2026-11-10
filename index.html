@@ -21,11 +21,36 @@
     .section{padding:88px 0}.alt{border-block:1px solid #9dbbe713;background:linear-gradient(180deg,#10213d70,#07101e55)}.section-head{max-width:700px;margin-bottom:40px}.section-head h2{margin:14px 0;font-size:clamp(2.15rem,4.3vw,3.5rem);line-height:1.08;letter-spacing:-.06em}.section-head p{margin:0;color:var(--muted);line-height:1.8}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{min-height:215px;padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213ddd,#0a172bdf);transition:.22s ease}.card:hover{transform:translateY(-4px);border-color:#5a9eff77}.icon{width:44px;height:44px;display:grid;place-items:center;margin-bottom:22px;border:1px solid #398dff44;border-radius:12px;background:#1677ff1b;color:#9acaff;font-size:1.2rem}.card h3{margin:0 0 10px;font-size:1.08rem}.card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
     .split{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}.copy{color:var(--muted);line-height:1.9}.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:23px}.value{padding:17px;border:1px solid var(--line);border-radius:12px;background:#10213d88}.value strong{display:block;margin-bottom:6px;color:white;font-family:"Space Grotesk"}.value span{color:var(--muted);font-size:.82rem;line-height:1.6}
     .project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.project{min-height:220px;display:flex;flex-direction:column;justify-content:space-between;padding:26px;border:1px solid var(--line);border-radius:15px;background:radial-gradient(ellipse at 90% 5%,#1677ff30,transparent 44%),linear-gradient(145deg,#122747,#0b172b)}.project-label{color:#8fc4ff;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.project h3{margin:15px 0 8px;font-size:1.35rem}.project p{max-width:450px;margin:0;color:var(--muted);line-height:1.7}.project small{margin-top:28px;color:#91a5c2}
-    .leadership{display:grid;grid-template-columns:1fr 1fr;gap:16px}.leader-card{padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213d,#0a172b)}.leader-card .icon{margin-bottom:18px}.leader-card h3{margin:0 0 8px}.leader-card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.7}
+    .leadership{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.leader-card{padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213d,#0a172b)}.leader-card .icon{margin-bottom:18px}.leader-card h3{margin:0 0 8px}.leader-card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.7}
     .review-box{padding:30px;border:1px dashed #6a9bd75c;border-radius:15px;background:#10213d55;color:var(--muted);line-height:1.8}.review-box strong{display:block;margin-bottom:7px;color:white;font-family:"Space Grotesk";font-size:1.05rem}
     .community{display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px;padding:32px;border:1px solid #4e9aff55;border-radius:18px;background:radial-gradient(ellipse at 100% 0,#1677ff35,transparent 50%),linear-gradient(120deg,#112748,#0a172b)}.community h2{margin:12px 0;font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.05em}.community p{max-width:650px;margin:0;color:var(--muted);line-height:1.75}
     .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:35px;align-items:start}.contact-copy p{color:var(--muted);line-height:1.8}.contact-form{display:grid;gap:13px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#10213dbb}.field{display:grid;gap:7px}.field label{font-size:.82rem;font-weight:600;color:#dce8fb}.field input,.field select,.field textarea{width:100%;padding:12px 13px;border:1px solid #9dbbe72b;border-radius:9px;outline:none;background:#081427;color:white}.field input:focus,.field select:focus,.field textarea:focus{border-color:#4d9bff}.field textarea{min-height:115px;resize:vertical}.form-note{margin:0;color:#8fa2bf;font-size:.76rem;line-height:1.6}.form-status{min-height:20px;color:#9bd0ff;font-size:.83rem}
     footer{padding:27px 0;border-top:1px solid var(--line)}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#8293ad;font-size:.8rem}.footer-links{display:flex;gap:18px}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes floatCard{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+    @keyframes orbitSpin{from{transform:rotate(-25deg) scaleY(.78)}to{transform:rotate(335deg) scaleY(.78)}}
+    @keyframes pulseGlow{0%,100%{opacity:.55;filter:blur(58px)}50%{opacity:1;filter:blur(76px)}}
+    @keyframes gradientFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .hero-grid>div:first-child{animation:fadeUp .85s cubic-bezier(.2,.7,.2,1) both}
+    .visual{animation:fadeUp 1s .12s both}
+    .mock{animation:floatCard 6s ease-in-out infinite}
+    .orbit{animation:orbitSpin 34s linear infinite}
+    .halo{animation:pulseGlow 5s ease-in-out infinite}
+    .gradient{background-size:200% 200%;animation:gradientFlow 8s ease infinite}
+    .btn{position:relative;overflow:hidden}
+    .primary:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,#ffffff30 48%,transparent 72%);background-size:220% 100%;background-position:-220% 0;transition:background-position .7s ease}
+    .primary:hover:after{background-position:220% 0}
+    .card,.project,.leader-card{will-change:transform}
+    .card:hover,.project:hover,.leader-card:hover{transform:translateY(-7px);border-color:#66adff99;box-shadow:0 18px 45px #0004,0 0 24px #1677ff18}
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .cards .reveal:nth-child(2),.leadership .reveal:nth-child(2){transition-delay:.12s}
+    .cards .reveal:nth-child(3),.leadership .reveal:nth-child(3){transition-delay:.24s}
+    .leader-card{position:relative;overflow:hidden}
+    .leader-card:before{content:"";position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(transparent,#3c9bff,transparent);opacity:.8}
+    .leader-rank{display:inline-flex;margin:0 0 12px;padding:6px 10px;border:1px solid #579fff44;border-radius:999px;background:#1677ff18;color:#a8d1ff;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .leader-card .username{margin:0 0 8px;color:#9ccaff;font-size:.86rem;font-weight:600}
+    @media(prefers-reduced-motion:reduce){.hero-grid>div:first-child,.visual,.mock,.orbit,.halo,.gradient{animation:none!important}.reveal{opacity:1;transform:none;transition:none}}
     @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:10px}.hero{padding:85px 0 65px}.visual{min-height:350px}.split{grid-template-columns:1fr;gap:25px}.cards{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}}
     @media(max-width:640px){.wrap{width:calc(100% - 34px)}.nav{min-height:68px}.menu{display:grid;place-items:center}.links{position:absolute;top:68px;left:0;right:0;display:none;align-items:stretch;gap:0;padding:8px 17px 17px;border-bottom:1px solid var(--line);background:#07101efc}.links.open{display:flex;flex-direction:column}.links a{padding:12px 4px}.nav>.nav-cta{display:none}.hero{padding-top:68px}h1{font-size:clamp(3rem,15vw,4.7rem)}.hero p{font-size:1rem}.visual{min-height:315px}.section{padding:68px 0}.cards,.project-grid,.leadership{grid-template-columns:1fr}.card{min-height:0}.values{grid-template-columns:1fr}.community{grid-template-columns:1fr}.footer-row{align-items:flex-start;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -76,10 +101,11 @@
   </div></section>
 
   <section class="section" id="team"><div class="wrap">
-    <div class="section-head"><div class="eyebrow">The people behind Botsy</div><h2>Leadership & management.</h2><p>Our leadership structure keeps projects coordinated and the studio moving forward.</p></div>
+    <div class="section-head reveal"><div class="eyebrow">The people behind Botsy</div><h2>Meet the Ownership Team.</h2><p>The leadership behind Botsy Studios, guiding its vision, direction and growth.</p></div>
     <div class="leadership">
-      <article class="leader-card"><div class="icon">✦</div><h3>Ownership</h3><p>Sets the studio’s direction, oversees key decisions and guides the long-term vision of Botsy Studios.</p></article>
-      <article class="leader-card"><div class="icon">◈</div><h3>Management</h3><p>Coordinates operations, supports project delivery and helps maintain a consistent client experience.</p></article>
+      <article class="leader-card reveal"><div class="icon">♛</div><div class="leader-rank">Founder</div><h3>TheRealShubz</h3><p class="username">@TheRealShubz</p><p>Leads the studio’s vision, direction and overall leadership.</p></article>
+      <article class="leader-card reveal"><div class="icon">✦</div><div class="leader-rank">Co-Founder</div><h3>Inan_2fun</h3><p class="username">@Inan_2fun</p><p>Helps shape the studio’s direction and supports its continued growth.</p></article>
+      <article class="leader-card reveal"><div class="icon">◆</div><div class="leader-rank">Owner</div><h3>JulienBen</h3><p class="username">@JulienBen</p><p>Supports ownership and the day-to-day direction of Botsy Studios.</p></article>
     </div>
   </div></section>
 
@@ -111,6 +137,14 @@
   menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');navLinks.classList.toggle('open',!open)});
   navLinks.addEventListener('click',event=>{if(event.target.closest('a')){navLinks.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open menu')}});
   document.getElementById('year').textContent=new Date().getFullYear();
+  const revealItems=document.querySelectorAll('.section-head,.card,.project,.leader-card,.review-box,.community,.contact-form,.contact-copy');
+  revealItems.forEach(item=>item.classList.add('reveal'));
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}
+    }),{threshold:.12,rootMargin:'0px 0px -35px 0px'});
+    revealItems.forEach(item=>revealObserver.observe(item));
+  }else{revealItems.forEach(item=>item.classList.add('visible'))}
   document.getElementById('enquiry-form').addEventListener('submit',async event=>{
     event.preventDefault();
     const service=document.getElementById('service').value;
