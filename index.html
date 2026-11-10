@@ -117,9 +117,9 @@
     const project=document.getElementById('project').value.trim();
     const message='Botsy Studios Project Enquiry\nService: '+service+'\nProject details: '+project;
     const status=document.getElementById('form-status');
+    window.open('https://discord.gg/PQXCjgDQSe','_blank','noopener,noreferrer');
     try{await navigator.clipboard.writeText(message);status.textContent='Enquiry copied. Paste it into a ticket after joining the Discord server.'}
     catch(error){status.textContent='Your enquiry is ready. Copy the service and project details above, then paste them into a Discord ticket.'}
-    window.open('https://discord.gg/PQXCjgDQSe','_blank','noopener,noreferrer');
   });
 </script>
 </body>
