@@ -154,7 +154,7 @@
     const loader=document.getElementById('botsy-loader');
     if(!loader)return;
     document.body.classList.add('botsy-loading');
-    const hideLoader=()=>{setTimeout(()=>{loader.classList.add('is-hidden');document.body.classList.remove('botsy-loading');setTimeout(()=>loader.remove(),500)},300)};
+    let hiding=false;\n    const hideLoader=()=>{if(hiding)return;hiding=true;setTimeout(()=>{loader.classList.add('is-hidden');document.body.classList.remove('botsy-loading');setTimeout(()=>loader.remove(),500)},300)};
     if(document.readyState==='complete')hideLoader();
     else window.addEventListener('load',hideLoader,{once:true});
     setTimeout(hideLoader,8000);
