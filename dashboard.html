@@ -67,9 +67,11 @@
     @keyframes botsy-ring-spin{to{transform:rotate(360deg)}}
     body.botsy-loading{overflow:hidden}
     @media(prefers-reduced-motion:reduce){#botsy-loader{transition:none}.loader-emblem:before,.loader-emblem:after{animation:none}}
-\n  </style>
+
+  </style>
 </head>
-<body>\n<div id="botsy-loader" role="status" aria-label="Loading Botsy Studios">
+<body>
+<div id="botsy-loader" role="status" aria-label="Loading Botsy Studios">
   <div class="loader-inner">
     <div class="loader-emblem"><div class="loader-core">BS</div></div>
     <div class="loader-name">BOTSY <span>STUDIOS</span></div>
@@ -149,15 +151,19 @@
 </script>
   <script src="supabase-config.js"></script>
   <script type="module" src="dashboard-live.js"></script>
-<script>\n
+<script>
+
   (function(){
     const loader=document.getElementById('botsy-loader');
     if(!loader)return;
     document.body.classList.add('botsy-loading');
-    let hiding=false;\n    const hideLoader=()=>{if(hiding)return;hiding=true;setTimeout(()=>{loader.classList.add('is-hidden');document.body.classList.remove('botsy-loading');setTimeout(()=>loader.remove(),500)},300)};
+    let hiding=false;
+    const hideLoader=()=>{if(hiding)return;hiding=true;setTimeout(()=>{loader.classList.add('is-hidden');document.body.classList.remove('botsy-loading');setTimeout(()=>loader.remove(),500)},300)};
     if(document.readyState==='complete')hideLoader();
     else window.addEventListener('load',hideLoader,{once:true});
     setTimeout(hideLoader,8000);
   })();
-\n</script>\n</body>
+
+</script>
+</body>
 </html>
