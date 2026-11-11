@@ -14,6 +14,8 @@ const statusLabel = value => ({
 }[value] || String(value || "Updated").replaceAll("_"," "));
 const statusClass = value => ["completed"].includes(value)?"done":
   ["quality_check","awaiting_review","revision_requested"].includes(value)?"review":"";
+document.querySelector(".preview")?.remove();
+let realtimeChannel = null;
 const showMessage = (heading, body, buttonText="", onClick=null) => {
  root.innerHTML = `<section class="panel" style="max-width:680px;margin:55px auto;padding:28px">
    <div class="eyebrow">Botsy Studios · Client Portal</div>
@@ -72,7 +74,8 @@ if(!configured){
     </div>`;
    document.getElementById("signout").addEventListener("click",async()=>{await supabase.auth.signOut();location.reload()});
    // Realtime is supplementary; reload on any visible order or event change.
-   supabase.channel("client-orders-"+discordId)
+   if(realtimeChannel) await supabase.removeChannel(realtimeChannel);
+   realtimeChannel=supabase.channel("client-orders-"+discordId)
     .on("postgres_changes",{event:"*",schema:"public",table:"orders",filter:"client_discord_id=eq."+discordId},()=>renderDashboard(user))
     .on("postgres_changes",{event:"*",schema:"public",table:"order_events"},()=>renderDashboard(user))
     .subscribe();
