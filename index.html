@@ -87,9 +87,31 @@
     footer{background:#03091655}
     @media(max-width:640px){body{background-size:auto,auto,38px 38px,38px 38px}.hero{min-height:0}.links{background:#050d1df5;backdrop-filter:blur(18px)}}
     @media(prefers-reduced-motion:reduce){.links a:after{transition:none}.primary{background-position:0 0}}
-  </style>
+
+    /* Botsy Studios branded page loader */
+    #botsy-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(ellipse at center,#10284a 0%,#071326 42%,#030916 100%);opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
+    #botsy-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-inner{display:grid;justify-items:center;gap:18px}
+    .loader-emblem{position:relative;width:104px;height:104px;display:grid;place-items:center}
+    .loader-emblem:before,.loader-emblem:after{position:absolute;inset:2px;border:2px solid transparent;border-top-color:#65c8ff;border-right-color:#2583ff;border-radius:50%;content:"";animation:botsy-ring-spin 1.35s linear infinite;filter:drop-shadow(0 0 8px #2583ff99)}
+    .loader-emblem:after{inset:11px;border-width:1px;border-top-color:#ffffffd9;border-left-color:#55d5ff;border-right-color:transparent;animation-duration:2.1s;animation-direction:reverse;opacity:.8}
+    .loader-core{width:65px;height:65px;display:grid;place-items:center;border:1px solid #8ccaff88;border-radius:19px;background:linear-gradient(145deg,#248fff,#123c9c);box-shadow:0 0 0 5px #2583ff17,0 0 38px #1677ff77,inset 0 1px #ffffff70;color:white;font:700 1.25rem "Space Grotesk",sans-serif;letter-spacing:-.09em;text-shadow:0 2px 12px #001b4c}
+    .loader-name{color:#f3f8ff;font:700 .82rem "Space Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase}
+    .loader-name span{color:#75baff}
+    .loader-caption{margin-top:-11px;color:#829cbd;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase}
+    @keyframes botsy-ring-spin{to{transform:rotate(360deg)}}
+    body.botsy-loading{overflow:hidden}
+    @media(prefers-reduced-motion:reduce){#botsy-loader{transition:none}.loader-emblem:before,.loader-emblem:after{animation:none}}
+\n  </style>
 </head>
-<body>
+<body>\n<div id="botsy-loader" role="status" aria-label="Loading Botsy Studios">
+  <div class="loader-inner">
+    <div class="loader-emblem"><div class="loader-core">BS</div></div>
+    <div class="loader-name">BOTSY <span>STUDIOS</span></div>
+    <div class="loader-caption">Preparing your experience</div>
+  </div>
+</div>
+
 <header class="header"><div class="wrap nav">
   <a class="brand" href="#home" aria-label="Botsy Studios home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a>
   <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
@@ -199,5 +221,15 @@
     catch(error){status.textContent='Your enquiry is ready. Copy the service and project details above, then paste them into a Discord ticket.'}
   });
 </script>
-</body>
+<script>\n
+  (function(){
+    const loader=document.getElementById('botsy-loader');
+    if(!loader)return;
+    document.body.classList.add('botsy-loading');
+    const hideLoader=()=>{setTimeout(()=>{loader.classList.add('is-hidden');document.body.classList.remove('botsy-loading');setTimeout(()=>loader.remove(),500)},300)};
+    if(document.readyState==='complete')hideLoader();
+    else window.addEventListener('load',hideLoader,{once:true});
+    setTimeout(hideLoader,8000);
+  })();
+\n</script>\n</body>
 </html>
