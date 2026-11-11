@@ -34,8 +34,10 @@ if(!configured){
    if(error) showMessage("Sign-in could not start",error.message);
  });
  const renderDashboard=async(user)=>{
-   const discordId=String(user.user_metadata?.provider_id || "");
-   if(!discordId){await supabase.auth.signOut();showMessage("Discord identity unavailable","Supabase did not return the Discord account ID. Check that Discord OAuth is enabled and configured correctly.");return;}
+   const {data:identity,error:identityError}=await supabase.from("discord_identities").select("discord_id").eq("user_id",user.id).maybeSingle();
+   if(identityError){showMessage("Could not verify your Discord account",identityError.message);return;}
+   const discordId=String(identity?.discord_id || "");
+   if(!discordId){showMessage("Discord identity is still being linked","Sign out and sign in again with Discord. If this continues, contact Botsy support.");return;}
    const {data:orders,error}=await supabase.from("orders").select("*").eq("client_discord_id",discordId).order("created_at",{ascending:false});
    if(error){showMessage("Could not load your orders",error.message);return;}
    const orderIds=(orders||[]).map(o=>o.id);
