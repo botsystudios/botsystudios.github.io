@@ -103,9 +103,33 @@
     body.botsy-loading{overflow:hidden}
     @media(prefers-reduced-motion:reduce){#botsy-loader{transition:none}.loader-emblem:before,.loader-emblem:after{animation:none}}
 
+    /* Interactive studio experience */
+    #scroll-progress{position:fixed;top:0;left:0;z-index:1000;width:0;height:2px;background:linear-gradient(90deg,#2583ff,#55d5ff);box-shadow:0 0 14px #2583ff;pointer-events:none}
+    .ambient-glow{position:fixed;z-index:-1;top:0;left:0;width:420px;height:420px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#2583ff12,transparent 68%);transform:translate(-50%,-50%);opacity:0;transition:opacity .25s}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:steps}
+    .process-step{position:relative;min-height:190px;padding:24px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213ddd,#081427df);overflow:hidden;counter-increment:steps;transition:transform .25s,border-color .25s,box-shadow .25s}
+    .process-step:hover{transform:translateY(-6px);border-color:#65adff88;box-shadow:0 18px 48px #0005,0 0 26px #1677ff18}
+    .process-step:before{content:"0" counter(steps);display:block;margin-bottom:26px;color:#70baff;font:700 1.6rem "Space Grotesk";letter-spacing:-.06em}
+    .process-step h3{margin:0 0 9px;font-size:1.05rem}.process-step p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.7}
+    .faq-list{display:grid;gap:10px;max-width:850px}
+    .faq-list details{border:1px solid var(--line);border-radius:12px;background:#0c1a30b8;overflow:hidden;transition:border-color .2s}
+    .faq-list details[open]{border-color:#579fff77}
+    .faq-list summary{position:relative;padding:19px 52px 19px 20px;cursor:pointer;list-style:none;color:#edf5ff;font-weight:650}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list summary:after{position:absolute;right:20px;content:"+";color:#80bdff;font-size:1.35rem;top:50%;transform:translateY(-50%);transition:transform .2s}
+    .faq-list details[open] summary:after{content:"−"}
+    .faq-answer{padding:0 20px 19px;color:var(--muted);font-size:.9rem;line-height:1.75}
+    .back-top{position:fixed;right:22px;bottom:22px;z-index:30;width:46px;height:46px;border:1px solid #6eafff66;border-radius:13px;background:#0b1c34df;color:#d8edff;font-size:1.2rem;box-shadow:0 8px 30px #0006,0 0 22px #1677ff22;backdrop-filter:blur(14px);opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s;cursor:pointer}
+    .back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+    .section-kicker{margin:0 0 12px;color:#8fc4ff;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    @media(max-width:850px){.process-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.process-grid{grid-template-columns:1fr}.process-step{min-height:0}.back-top{right:14px;bottom:14px}}
+    @media(prefers-reduced-motion:reduce){.process-step,.faq-list details,.back-top{transition:none}.ambient-glow{display:none}}
   </style>
 </head>
 <body>
+<div id="scroll-progress" aria-hidden="true"></div>
+<div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
 <div id="botsy-loader" role="status" aria-label="Loading Botsy Studios">
   <div class="loader-inner">
     <div class="loader-emblem"><div class="loader-core">BS</div></div>
@@ -117,7 +141,7 @@
 <header class="header"><div class="wrap nav">
   <a class="brand" href="#home" aria-label="Botsy Studios home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a>
   <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
-  <nav class="links" id="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="dashboard.html">Client Portal ↗</a></nav>
+  <nav class="links" id="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="dashboard.html">Client Portal ↗</a></nav>
   <a class="btn primary nav-cta" href="dashboard.html">Client Portal ↗</a>
 </div></header>
 <main>
@@ -181,6 +205,27 @@
     <div class="review-box"><strong>Customer reviews are coming soon.</strong>Once clients have shared feedback that we have permission to publish, their genuine testimonials will appear here. We don’t use invented reviews or ratings.</div>
   </div></section>
 
+  <section class="section" id="process"><div class="wrap">
+    <div class="section-head"><div class="eyebrow">A clear process</div><h2>From first idea to finished system.</h2><p>Every project moves through a straightforward process, so expectations, communication and delivery stay clear.</p></div>
+    <div class="process-grid">
+      <article class="process-step"><h3>Discover</h3><p>Tell us what you want to build, who it is for and what the finished result should do.</p></article>
+      <article class="process-step"><h3>Plan</h3><p>We review the requirements, confirm scope and agree on the quote and timeline in your ticket.</p></article>
+      <article class="process-step"><h3>Create</h3><p>Our team develops and configures the agreed solution, keeping communication clear as work progresses.</p></article>
+      <article class="process-step"><h3>Deliver</h3><p>We share the completed work and any relevant handover information through your project ticket.</p></article>
+    </div>
+  </div></section>
+
+  <section class="section alt" id="faq"><div class="wrap">
+    <div class="section-head"><div class="eyebrow">Quick answers</div><h2>Frequently asked questions.</h2><p>A few helpful details before you start a project with Botsy Studios.</p></div>
+    <div class="faq-list">
+      <details><summary>How do I place an order?</summary><div class="faq-answer">Join our Discord server and open a ticket. Tell our team what you need, and we’ll discuss the requirements and next steps there.</div></details>
+      <details><summary>Are the prices fixed?</summary><div class="faq-answer">No. Prices shown on this website are starting estimates. Your final quote depends on the features, complexity and scope of the project.</div></details>
+      <details><summary>How do I pay?</summary><div class="faq-answer">Accepted payment methods and the final price are confirmed by our team in your Discord ticket before an order is approved.</div></details>
+      <details><summary>Can I track my project?</summary><div class="faq-answer">Use the Client Portal to access the available client features. Project updates and communication are handled through your Discord ticket.</div></details>
+      <details><summary>Can I request a custom system?</summary><div class="faq-answer">Yes. Open a ticket and describe your idea. Our team can review custom requirements and let you know what is possible.</div></details>
+    </div>
+  </div></section>
+
   <section class="section" id="community"><div class="wrap"><div class="community">
     <div><div class="eyebrow">Join the community</div><h2>Connect with Botsy Studios.</h2><p>Visit our Discord server to learn more, talk with the team, ask questions or open a ticket for your project.</p></div>
     <a class="btn primary" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Join Discord ↗</a>
@@ -198,7 +243,32 @@
   </div></section>
 </main>
 <footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a><span>© <span id="year"></span> Botsy Studios. Your vision. Our creation.</span><div class="footer-links"><a href="#services">Services</a><a href="dashboard.html">Client Portal</a><a href="#contact">Contact</a><a href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Discord ↗</a></div></div></footer>
+<button class="back-top" id="back-top" type="button" aria-label="Back to top">↑</button>
 <script>
+  // Smooth ambient interactions, with reduced-motion and touch-device support.
+  const progressBar=document.getElementById('scroll-progress');
+  const ambientGlow=document.getElementById('ambient-glow');
+  const backTop=document.getElementById('back-top');
+  let scrollTick=false;
+  const updateScrollUI=()=>{
+    const maxScroll=document.documentElement.scrollHeight-window.innerHeight;
+    const progress=maxScroll>0?(window.scrollY/maxScroll)*100:0;
+    progressBar.style.width=progress+'%';
+    backTop.classList.toggle('visible',window.scrollY>520);
+    scrollTick=false;
+  };
+  window.addEventListener('scroll',()=>{if(!scrollTick){requestAnimationFrame(updateScrollUI);scrollTick=true}},{passive:true});
+  updateScrollUI();
+  backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+  if(ambientGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    ambientGlow.style.opacity='1';
+    let pointerTick=false,lastX=0,lastY=0;
+    window.addEventListener('pointermove',event=>{
+      lastX=event.clientX;lastY=event.clientY;
+      if(!pointerTick){requestAnimationFrame(()=>{ambientGlow.style.left=lastX+'px';ambientGlow.style.top=lastY+'px';pointerTick=false});pointerTick=true}
+    },{passive:true});
+  }
+  document.querySelectorAll('.process-step').forEach((step,index)=>{step.style.transitionDelay=(index*55)+'ms'});
   const menuButton=document.querySelector('.menu');
   const navLinks=document.querySelector('.links');
   menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');navLinks.classList.toggle('open',!open)});
