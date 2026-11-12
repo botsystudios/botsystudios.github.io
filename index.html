@@ -1,403 +1,87 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07101f">
-  <meta name="description" content="Botsy Studios creates custom Discord bots, server systems and digital solutions. Your vision. Our creation.">
-  <meta property="og:title" content="Botsy Studios — Your vision. Our creation.">
-  <meta property="og:description" content="Custom Discord bots, server systems and digital solutions built around your community.">
-  <meta property="og:type" content="website">
-  <title>Botsy Studios — Your vision. Our creation.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{color-scheme:dark;--bg:#070f1e;--panel:#0d1a30;--panel2:#10213d;--line:rgba(157,190,239,.14);--text:#f5f8ff;--muted:#a6b5cc;--blue:#2583ff;--cyan:#55d5ff;--max:1160px;font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;min-width:320px;background:radial-gradient(ellipse at 80% 0,rgba(24,91,184,.12),transparent 36%),var(--bg)}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
-    .header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(7,15,30,.86);backdrop-filter:blur(18px)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:inline-flex;align-items:center;gap:11px;font:700 1.05rem "Space Grotesk",sans-serif;letter-spacing:-.04em}.brand-mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(144,197,255,.45);border-radius:12px;background:linear-gradient(145deg,#39a5ff,#1552d8);box-shadow:0 7px 28px #1677ff44;color:white;font-size:1.15rem}.brand-name span{color:#79baff}.links{display:flex;align-items:center;gap:26px;color:#c1cde0;font-size:.88rem}.links a:hover,.footer-links a:hover{color:white}.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 19px;border:1px solid transparent;border-radius:10px;font-weight:700;font-size:.9rem;transition:.2s ease;cursor:pointer}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(110deg,#1680ff,#285ce6);color:white;box-shadow:0 9px 27px #1677ff33}.secondary{border-color:var(--line);background:#ffffff08}.secondary:hover{border-color:#5c9cff88;background:#1677ff18}.menu{display:none;width:43px;height:43px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:white}
-    .hero{position:relative;overflow:hidden;padding:112px 0 92px}.hero:before{position:absolute;content:"";width:650px;height:650px;right:-190px;top:-280px;border-radius:50%;background:radial-gradient(circle,#1677ff35,transparent 68%);pointer-events:none}.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:55px}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#8fc4ff;font-size:.73rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase}.eyebrow:before{content:"";width:23px;height:1px;background:var(--blue)}h1,h2,h3{font-family:"Space Grotesk",sans-serif}h1{margin:21px 0;font-size:clamp(3.3rem,7.5vw,6.3rem);line-height:.98;letter-spacing:-.078em}.gradient{color:transparent;background:linear-gradient(100deg,#fff 12%,#8dc5ff 68%,#4bd6ff);background-clip:text;-webkit-background-clip:text}.hero p{max-width:570px;color:var(--muted);font-size:1.08rem;line-height:1.8}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.micro{display:flex;flex-wrap:wrap;gap:15px;margin-top:32px;color:#8295b2;font-size:.68rem;font-weight:700;letter-spacing:.14em}.micro span+span:before{content:"•";margin-right:15px;color:#4e9dff}
-    .visual{position:relative;min-height:400px;display:grid;place-items:center}.orbit{position:absolute;width:min(100%,405px);aspect-ratio:1;border:1px solid #6aa8ff26;border-radius:50%;transform:rotate(-25deg) scaleY(.78)}.orbit:before,.orbit:after{position:absolute;inset:28px -28px;border:1px solid #6aa8ff1b;border-radius:50%;content:""}.orbit:after{inset:-26px 48px}.halo{position:absolute;width:250px;height:250px;border-radius:50%;background:#1677ff38;filter:blur(65px)}.mock{position:relative;width:min(100%,355px);padding:24px;border:1px solid #9bc5ff38;border-radius:22px;background:linear-gradient(145deg,#18365c,#0b172c);box-shadow:0 30px 90px #0008;transform:rotate(2deg)}.mock-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line);font-size:.72rem;font-weight:700;color:#dceaff}.live{color:#8ee3ba;font-size:.68rem}.live:before{content:"";display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;background:#53d99a;box-shadow:0 0 10px #53d99a}.mock-icon{width:58px;height:58px;display:grid;place-items:center;margin:25px 0 17px;border:1px solid #64aaff55;border-radius:17px;background:#1677ff25;color:#a8d1ff;font:700 1.6rem "Space Grotesk"}.mock h3{margin:0 0 8px;font-size:1.35rem}.mock p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.7}.bars{display:grid;gap:9px;margin-top:24px}.bars i{height:7px;border-radius:20px;background:linear-gradient(90deg,#318dffb0,#318dff12)}.bars i:nth-child(2){width:75%;opacity:.7}.bars i:nth-child(3){width:52%;opacity:.45}
-    .section{padding:64px 0}.alt{border-block:1px solid #9dbbe713;background:linear-gradient(180deg,#10213d70,#07101e55)}.section-head{max-width:700px;margin-bottom:30px}.section-head h2{margin:14px 0;font-size:clamp(2.15rem,4.3vw,3.5rem);line-height:1.08;letter-spacing:-.06em}.section-head p{margin:0;color:var(--muted);line-height:1.8}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{min-height:215px;padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213ddd,#0a172bdf);transition:.22s ease}.card:hover{transform:translateY(-4px);border-color:#5a9eff77}.icon{width:44px;height:44px;display:grid;place-items:center;margin-bottom:22px;border:1px solid #398dff44;border-radius:12px;background:#1677ff1b;color:#9acaff;font-size:1.2rem}.card h3{margin:0 0 10px;font-size:1.08rem}.card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.75}
-    .split{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}.copy{color:var(--muted);line-height:1.9}.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:23px}.value{padding:17px;border:1px solid var(--line);border-radius:12px;background:#10213d88}.value strong{display:block;margin-bottom:6px;color:white;font-family:"Space Grotesk"}.value span{color:var(--muted);font-size:.82rem;line-height:1.6}
-    .project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.project{min-height:220px;display:flex;flex-direction:column;justify-content:space-between;padding:26px;border:1px solid var(--line);border-radius:15px;background:radial-gradient(ellipse at 90% 5%,#1677ff30,transparent 44%),linear-gradient(145deg,#122747,#0b172b)}.project-label{color:#8fc4ff;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.project h3{margin:15px 0 8px;font-size:1.35rem}.project p{max-width:450px;margin:0;color:var(--muted);line-height:1.7}.project small{margin-top:28px;color:#91a5c2}
-    .leadership{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.leader-card{padding:25px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213d,#0a172b)}.leader-card .icon{margin-bottom:18px}.leader-card h3{margin:0 0 8px}.leader-card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.7}
-    .review-box{padding:30px;border:1px dashed #6a9bd75c;border-radius:15px;background:#10213d55;color:var(--muted);line-height:1.8}.review-box strong{display:block;margin-bottom:7px;color:white;font-family:"Space Grotesk";font-size:1.05rem}
-    .community{display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px;padding:32px;border:1px solid #4e9aff55;border-radius:18px;background:radial-gradient(ellipse at 100% 0,#1677ff35,transparent 50%),linear-gradient(120deg,#112748,#0a172b)}.community h2{margin:12px 0;font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.05em}.community p{max-width:650px;margin:0;color:var(--muted);line-height:1.75}
-    .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:35px;align-items:start}.contact-copy p{color:var(--muted);line-height:1.8}.contact-form{display:grid;gap:13px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#10213dbb}.field{display:grid;gap:7px}.field label{font-size:.82rem;font-weight:600;color:#dce8fb}.field input,.field select,.field textarea{width:100%;padding:12px 13px;border:1px solid #9dbbe72b;border-radius:9px;outline:none;background:#081427;color:white}.field input:focus,.field select:focus,.field textarea:focus{border-color:#4d9bff}.field textarea{min-height:115px;resize:vertical}.form-note{margin:0;color:#8fa2bf;font-size:.76rem;line-height:1.6}.form-status{min-height:20px;color:#9bd0ff;font-size:.83rem}
-    footer{padding:27px 0;border-top:1px solid var(--line)}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#8293ad;font-size:.8rem}.footer-links{display:flex;gap:18px}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes floatCard{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-12px) rotate(1deg)}}
-    @keyframes orbitSpin{from{transform:rotate(-25deg) scaleY(.78)}to{transform:rotate(335deg) scaleY(.78)}}
-    @keyframes pulseGlow{0%,100%{opacity:.55;filter:blur(58px)}50%{opacity:1;filter:blur(76px)}}
-    @keyframes gradientFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    .hero-grid>div:first-child{animation:fadeUp .85s cubic-bezier(.2,.7,.2,1) both}
-    .visual{animation:fadeUp 1s .12s both}
-    .mock{animation:floatCard 6s ease-in-out infinite}
-    .orbit{animation:orbitSpin 34s linear infinite}
-    .halo{animation:pulseGlow 5s ease-in-out infinite}
-    .gradient{background-size:200% 200%;animation:gradientFlow 8s ease infinite}
-    .btn{position:relative;overflow:hidden}
-    .primary:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,#ffffff30 48%,transparent 72%);background-size:220% 100%;background-position:-220% 0;transition:background-position .7s ease}
-    .primary:hover:after{background-position:220% 0}
-    .card,.project,.leader-card{will-change:transform}
-    .card:hover,.project:hover,.leader-card:hover{transform:translateY(-7px);border-color:#66adff99;box-shadow:0 18px 45px #0004,0 0 24px #1677ff18}
-    .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    .cards .reveal:nth-child(2),.leadership .reveal:nth-child(2){transition-delay:.12s}
-    .cards .reveal:nth-child(3),.leadership .reveal:nth-child(3){transition-delay:.24s}
-    .leader-card{position:relative;overflow:hidden}
-    .leader-card:before{content:"";position:absolute;inset:0 auto 0 0;width:2px;background:linear-gradient(transparent,#3c9bff,transparent);opacity:.8}
-    .leader-rank{display:inline-flex;margin:0 0 12px;padding:6px 10px;border:1px solid #579fff44;border-radius:999px;background:#1677ff18;color:#a8d1ff;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .leader-card .username{margin:0 0 8px;color:#9ccaff;font-size:.86rem;font-weight:600}
-    @media(prefers-reduced-motion:reduce){.hero-grid>div:first-child,.visual,.mock,.orbit,.halo,.gradient{animation:none!important}.reveal{opacity:1;transform:none;transition:none}}
-    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:10px}.hero{padding:85px 0 65px}.visual{min-height:350px}.split{grid-template-columns:1fr;gap:25px}.cards{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}}
-    @media(max-width:640px){.wrap{width:calc(100% - 34px)}.nav{min-height:68px}.menu{display:grid;place-items:center}.links{position:absolute;top:68px;left:0;right:0;display:none;align-items:stretch;gap:0;padding:8px 17px 17px;border-bottom:1px solid var(--line);background:#07101efc}.links.open{display:flex;flex-direction:column}.links a{padding:12px 4px}.nav>.nav-cta{display:none}.hero{padding-top:68px}h1{font-size:clamp(3rem,15vw,4.7rem)}.hero p{font-size:1rem}.visual{min-height:315px}.section{padding:52px 0}.cards,.project-grid,.leadership{grid-template-columns:1fr}.card{min-height:0}.values{grid-template-columns:1fr}.community{grid-template-columns:1fr}.footer-row{align-items:flex-start;flex-direction:column}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
-
-    /* Futuristic visual layer */
-    body{position:relative;isolation:isolate;background-color:#050b18;background-image:radial-gradient(ellipse at 12% 18%,#1264d51c,transparent 34%),radial-gradient(ellipse at 88% 48%,#00b8ff0d,transparent 32%),linear-gradient(#5d9eff08 1px,transparent 1px),linear-gradient(90deg,#5d9eff08 1px,transparent 1px);background-size:auto,auto,52px 52px,52px 52px;background-attachment:fixed}
-    body:before{position:fixed;z-index:-1;inset:0;pointer-events:none;content:"";background:radial-gradient(ellipse at center,transparent 35%,#020611a8 100%)}
-    .header{border-bottom-color:#438fff35;background:rgba(4,11,25,.78);box-shadow:0 8px 35px #0003}
-    .brand-mark{position:relative;overflow:hidden;border-radius:11px;box-shadow:0 0 0 4px #2583ff12,0 0 30px #2583ff55,inset 0 1px #ffffff55}
-    .brand-mark:after{content:"";position:absolute;inset:-40% 45%;transform:rotate(35deg);background:#ffffff55;filter:blur(8px)}
-    .links a{position:relative;transition:color .2s ease}
-    .links a:after{position:absolute;right:0;bottom:-8px;left:0;height:2px;content:"";transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#2583ff,#55d5ff);transition:transform .22s ease}
-    .links a:hover:after{transform:scaleX(1)}
-    .hero{min-height:570px;display:flex;align-items:center}
-    .hero:after{position:absolute;right:7%;bottom:0;left:7%;height:1px;content:"";background:linear-gradient(90deg,transparent,#398eff66,transparent)}
-    .eyebrow{filter:drop-shadow(0 0 12px #2583ff55)}
-    h1{ text-shadow:0 8px 55px #268aff20}
-    .mock{border-color:#6bb5ff66;background:linear-gradient(145deg,#142e50eF,#081326f2);box-shadow:0 28px 100px #0009,0 0 55px #1677ff22,inset 0 1px #ffffff20;backdrop-filter:blur(18px)}
-    .mock:before{position:absolute;inset:9px;border:1px solid #9bc5ff12;border-radius:15px;content:"";pointer-events:none}
-    .orbit{border-color:#58aaff3d;box-shadow:0 0 45px #1680ff12}
-    .section-head h2{ text-wrap:balance}
-    .card,.project,.leader-card,.review-box,.contact-form,.community{position:relative;overflow:hidden;backdrop-filter:blur(14px);box-shadow:0 12px 40px #0002,inset 0 1px #ffffff08}
-    .card:after,.project:after{position:absolute;top:0;left:15%;width:70%;height:1px;content:"";background:linear-gradient(90deg,transparent,#7dc2ff88,transparent);opacity:.6}
-    .card:hover,.project:hover,.leader-card:hover{box-shadow:0 22px 60px #0006,0 0 28px #1677ff22,inset 0 1px #ffffff14}
-    .icon{box-shadow:0 0 24px #1677ff1b,inset 0 1px #ffffff12}
-    .btn{border-radius:9px;letter-spacing:.01em}
-    .primary{border:1px solid #8bc5ff45;background:linear-gradient(115deg,#087bff,#2455d9 55%,#087bff);background-size:180% 100%;box-shadow:0 8px 28px #1677ff40,inset 0 1px #ffffff35}
-    .primary:hover{background-position:100% 0;box-shadow:0 10px 35px #1677ff66}
-    .secondary{border-color:#75aaff35;background:#0d1c32a8;backdrop-filter:blur(12px)}
-    .community{border-color:#4e9aff77;box-shadow:0 18px 60px #0004,0 0 45px #1677ff18,inset 0 1px #ffffff18}
-    .contact-form{border-color:#5a9eff3d}
-    .field input,.field select,.field textarea{background:#061124cc;transition:border-color .2s,box-shadow .2s}
-    .field input:focus,.field select:focus,.field textarea:focus{border-color:#4d9bff;box-shadow:0 0 0 3px #2583ff20,0 0 22px #2583ff14}
-    footer{background:#03091655}
-    @media(max-width:640px){body{background-size:auto,auto,38px 38px,38px 38px}.hero{min-height:0}.links{background:#050d1df5;backdrop-filter:blur(18px)}}
-    @media(prefers-reduced-motion:reduce){.links a:after{transition:none}.primary{background-position:0 0}}
-
-    /* Botsy Studios branded page loader */
-    #botsy-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(ellipse at center,#10284a 0%,#071326 42%,#030916 100%);opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
-    #botsy-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-    .loader-inner{display:grid;justify-items:center;gap:18px}
-    .loader-emblem{position:relative;width:104px;height:104px;display:grid;place-items:center}
-    .loader-emblem:before,.loader-emblem:after{position:absolute;inset:2px;border:2px solid transparent;border-top-color:#65c8ff;border-right-color:#2583ff;border-radius:50%;content:"";animation:botsy-ring-spin 1.35s linear infinite;filter:drop-shadow(0 0 8px #2583ff99)}
-    .loader-emblem:after{inset:11px;border-width:1px;border-top-color:#ffffffd9;border-left-color:#55d5ff;border-right-color:transparent;animation-duration:2.1s;animation-direction:reverse;opacity:.8}
-    .loader-core{width:65px;height:65px;display:grid;place-items:center;border:1px solid #8ccaff88;border-radius:19px;background:linear-gradient(145deg,#248fff,#123c9c);box-shadow:0 0 0 5px #2583ff17,0 0 38px #1677ff77,inset 0 1px #ffffff70;color:white;font:700 1.25rem "Space Grotesk",sans-serif;letter-spacing:-.09em;text-shadow:0 2px 12px #001b4c}
-    .loader-name{color:#f3f8ff;font:700 .82rem "Space Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase}
-    .loader-name span{color:#75baff}
-    .loader-caption{margin-top:-11px;color:#829cbd;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase}
-    @keyframes botsy-ring-spin{to{transform:rotate(360deg)}}
-    body.botsy-loading{overflow:hidden}
-    @media(prefers-reduced-motion:reduce){#botsy-loader{transition:none}.loader-emblem:before,.loader-emblem:after{animation:none}}
-
-    /* Interactive studio experience */
-    #scroll-progress{position:fixed;top:0;left:0;z-index:1000;width:0;height:2px;background:linear-gradient(90deg,#2583ff,#55d5ff);box-shadow:0 0 14px #2583ff;pointer-events:none}
-    .ambient-glow{position:fixed;z-index:-1;top:0;left:0;width:420px;height:420px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#2583ff12,transparent 68%);transform:translate(-50%,-50%);opacity:0;transition:opacity .25s}
-    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:steps}
-    .process-step{position:relative;min-height:190px;padding:24px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213ddd,#081427df);overflow:hidden;counter-increment:steps;transition:transform .25s,border-color .25s,box-shadow .25s}
-    .process-step:hover{transform:translateY(-6px);border-color:#65adff88;box-shadow:0 18px 48px #0005,0 0 26px #1677ff18}
-    .process-step:before{content:"0" counter(steps);display:block;margin-bottom:26px;color:#70baff;font:700 1.6rem "Space Grotesk";letter-spacing:-.06em}
-    .process-step h3{margin:0 0 9px;font-size:1.05rem}.process-step p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.7}
-    .faq-list{display:grid;gap:10px;max-width:850px}
-    .faq-list details{border:1px solid var(--line);border-radius:12px;background:#0c1a30b8;overflow:hidden;transition:border-color .2s}
-    .faq-list details[open]{border-color:#579fff77}
-    .faq-list summary{position:relative;padding:19px 52px 19px 20px;cursor:pointer;list-style:none;color:#edf5ff;font-weight:650}
-    .faq-list summary::-webkit-details-marker{display:none}
-    .faq-list summary:after{position:absolute;right:20px;content:"+";color:#80bdff;font-size:1.35rem;top:50%;transform:translateY(-50%);transition:transform .2s}
-    .faq-list details[open] summary:after{content:"−"}
-    .faq-answer{padding:0 20px 19px;color:var(--muted);font-size:.9rem;line-height:1.75}
-    .back-top{position:fixed;right:22px;bottom:22px;z-index:30;width:46px;height:46px;border:1px solid #6eafff66;border-radius:13px;background:#0b1c34df;color:#d8edff;font-size:1.2rem;box-shadow:0 8px 30px #0006,0 0 22px #1677ff22;backdrop-filter:blur(14px);opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s;cursor:pointer}
-    .back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
-    .section-kicker{margin:0 0 12px;color:#8fc4ff;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
-    @media(max-width:850px){.process-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.process-grid{grid-template-columns:1fr}.process-step{min-height:0}.back-top{right:14px;bottom:14px}}
-    @media(prefers-reduced-motion:reduce){.process-step,.faq-list details,.back-top{transition:none}.ambient-glow{display:none}}
-  
-    /* 2026 premium Botsy redesign */
-    :root{--bg:#040916;--panel:#0a1730;--panel2:#0e2040;--line:rgba(125,171,235,.18);--text:#f6f9ff;--muted:#a7b7d1;--blue:#347dff;--cyan:#55e0ff;--max:1220px}
-    html{scroll-padding-top:96px}
-    body{background:#040916;background-image:radial-gradient(ellipse at 14% 10%,#125ee52a,transparent 34%),radial-gradient(ellipse at 88% 35%,#00c8ff12,transparent 30%),linear-gradient(135deg,#040916 0%,#07142a 48%,#040916 100%);background-attachment:fixed}
-    .wrap{width:min(var(--max),calc(100% - 64px))}
-    .header{background:#040916d9;border-bottom:1px solid #75aaff25;backdrop-filter:blur(24px)}
-    .nav{min-height:84px}
-    .brand{gap:13px;font-size:1.12rem;letter-spacing:-.055em}
-    .brand-mark{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,#66dcff 0%,#347dff 42%,#173db5 100%);box-shadow:0 0 0 5px #347dff12,0 0 36px #2583ff70,inset 0 1px #ffffffa6;font-size:1rem;letter-spacing:-.08em}
-    .brand-name span{color:#6bdcff}
-    .links{gap:21px;font-size:.82rem;color:#c4d2e8}
-    .links a:after{bottom:-10px}
-    .nav-cta{min-height:43px;padding-inline:17px}
-    .btn{border-radius:12px;min-height:49px;padding-inline:21px}
-    .primary{background:linear-gradient(115deg,#267bff,#3159e8 58%,#13bce9);box-shadow:0 10px 32px #1677ff40,inset 0 1px #ffffff55}
-    .secondary{background:#ffffff08;border-color:#a2c6ff30}
-    .hero{min-height:690px;padding:105px 0 90px;isolation:isolate}
-    .hero:before{width:820px;height:820px;right:-250px;top:-340px;background:radial-gradient(circle,#1677ff3d,transparent 66%)}
-    .hero:after{left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,#398eff70,transparent)}
-    .hero-grid{grid-template-columns:1.04fr .96fr;gap:38px}
-    .eyebrow{font-size:.7rem;letter-spacing:.2em;color:#8edfff}
-    .eyebrow:before{width:30px;height:2px;background:linear-gradient(90deg,#347dff,#55e0ff)}
-    h1{font-size:clamp(3.7rem,7.2vw,6.8rem);line-height:.93;letter-spacing:-.09em;margin:24px 0}
-    .gradient{background-image:linear-gradient(105deg,#fff 4%,#a9d5ff 43%,#53dfff 76%,#7d9dff 100%);background-size:220% 220%;filter:drop-shadow(0 12px 35px #2583ff22)}
-    .hero p{max-width:540px;font-size:1.03rem;line-height:1.85;color:#aebed5}
-    .actions{gap:13px;margin-top:32px}
-    .micro{gap:12px;margin-top:36px;font-size:.62rem;letter-spacing:.13em;color:#91a6c4}
-    .micro span{padding:8px 11px;border:1px solid #7faeea25;border-radius:999px;background:#ffffff05}
-    .micro span+span:before{display:none}
-    .visual{min-height:470px}
-    .orbit{width:min(100%,440px);border:1px solid #60caff50;box-shadow:0 0 70px #1677ff16,inset 0 0 55px #1677ff0b}
-    .orbit:before,.orbit:after{border-color:#66aaff2b}
-    .halo{width:310px;height:310px;background:#1677ff55;filter:blur(82px)}
-    .mock{width:min(100%,390px);padding:29px;border-radius:27px;border-color:#8acbff77;background:linear-gradient(145deg,#163967ed,#09162df5 72%);box-shadow:0 38px 110px #000b,0 0 70px #1677ff30,inset 0 1px #ffffff30;transform:rotate(0)}
-    .mock-top{font-size:.68rem;letter-spacing:.14em;color:#dcecff}
-    .mock-icon{width:70px;height:70px;border-radius:21px;background:linear-gradient(145deg,#43baff,#1b5de4);color:white;box-shadow:0 12px 35px #1677ff55;font-size:1.9rem}
-    .mock h3{font-size:1.55rem;letter-spacing:-.04em}
-    .mock p{font-size:.87rem}
-    .bars i{height:8px;background:linear-gradient(90deg,#45caff,#347dff 52%,#347dff10)}
-    .section{padding:82px 0}
-    .alt{background:linear-gradient(180deg,#0a1730a8,#07132980);border-block:1px solid #78aaff17}
-    .section-head{max-width:720px;margin-bottom:38px}
-    .section-head h2{font-size:clamp(2.3rem,4.5vw,3.8rem);letter-spacing:-.075em;line-height:1.02;margin:17px 0}
-    .section-head p{font-size:.96rem;line-height:1.85;color:#a7b7d1}
-    .cards{gap:18px}
-    .card{min-height:240px;padding:29px;border-radius:20px;border-color:#82b4f52a;background:linear-gradient(145deg,#102447e8,#09162beF 78%);box-shadow:0 18px 55px #0003,inset 0 1px #ffffff0c}
-    .card:after{left:10%;width:80%;background:linear-gradient(90deg,transparent,#70d9ff99,transparent)}
-    .card:hover{transform:translateY(-8px);border-color:#5dbdff99;box-shadow:0 24px 65px #0007,0 0 36px #1677ff20}
-    .icon{width:49px;height:49px;border-radius:15px;background:linear-gradient(145deg,#1a67b944,#1743a233);border-color:#60baff55;color:#9be4ff;font-size:1.35rem;box-shadow:0 0 30px #1677ff20}
-    .card h3{font-size:1.16rem;letter-spacing:-.025em}
-    .card p{font-size:.9rem;line-height:1.8}
-    .split{gap:85px}
-    .copy{font-size:.96rem;line-height:1.95}
-    .value{padding:20px;border-radius:15px;background:linear-gradient(145deg,#102447aa,#09162b99);border-color:#82b4f525}
-    .value strong{font-size:1rem}
-    .project-grid{gap:18px}
-    .project{min-height:260px;padding:30px;border-radius:20px;border-color:#75b3f532;background:radial-gradient(ellipse at 90% 4%,#1677ff45,transparent 46%),linear-gradient(145deg,#142d51,#09162b);box-shadow:0 18px 55px #0004}
-    .project h3{font-size:1.55rem;letter-spacing:-.04em}
-    .project p{line-height:1.8}
-    .leadership{gap:18px}
-    .leader-card{padding:28px;border-radius:19px;background:linear-gradient(145deg,#112748,#09162b);border-color:#82b4f52a}
-    .leader-card .icon{margin-bottom:22px}
-    .leader-card h3{font-size:1.2rem}
-    .review-box{padding:30px;border-radius:18px;border-style:solid;border-color:#70b8ff35;background:linear-gradient(145deg,#102447aa,#09162b99)}
-    .community{padding:42px;border-radius:23px;border-color:#58b8ff70;background:radial-gradient(ellipse at 100% 0,#1677ff50,transparent 52%),linear-gradient(120deg,#112c51,#09162b);box-shadow:0 25px 75px #0005,0 0 45px #1677ff15}
-    .community h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.065em}
-    .contact-grid{gap:60px}
-    .contact-form{padding:29px;border-radius:20px;background:linear-gradient(145deg,#102447e8,#09162bf2);border-color:#72b5ff3d}
-    .field input,.field select,.field textarea{padding:14px 15px;border-radius:11px;background:#050f21;border-color:#91b9ed30}
-    .field textarea{min-height:135px}
-    footer{padding:34px 0;border-color:#78aaff25;background:#030916a8}
-    .footer-row{color:#91a4c0}
-    .back-top{border-radius:15px;background:#0b1d39ed;border-color:#64baff88}
-    .faq-list{display:grid;gap:10px}
-    .faq-list details{border:1px solid #82b4f52a;border-radius:15px;background:linear-gradient(145deg,#102447bb,#09162bbb);overflow:hidden}
-    .faq-list summary{padding:21px 56px 21px 22px}
-    .faq-answer{padding:0 22px 22px;line-height:1.85}
-    .process-grid{gap:16px}
-    .process-step{min-height:210px;padding:27px;border-radius:18px;border-color:#82b4f52a;background:linear-gradient(145deg,#102447dd,#09162bee)}
-    .process-step:before{color:#63cfff}
-    .process-step h3{font-size:1.12rem}
-    .process-step p{color:#a7b7d1;line-height:1.8}
-    .reveal{transform:translateY(32px)}
-    @media(max-width:1050px){.links{gap:13px;font-size:.77rem}.hero-grid{gap:20px}.hero{min-height:630px}}
-    @media(max-width:850px){.wrap{width:calc(100% - 44px)}.hero{min-height:0;padding:86px 0 65px}.hero-grid{grid-template-columns:1fr;gap:8px}.visual{min-height:390px}.section{padding:68px 0}.split{gap:28px}.cards{grid-template-columns:repeat(2,1fr)}.process-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.wrap{width:calc(100% - 34px)}.nav{min-height:70px}.brand-mark{width:39px;height:39px}.links{top:70px;padding:10px 17px 18px;background:#050d1df7}.links a{padding:13px 5px}.links a:after{display:none}.hero{padding:70px 0 48px}.hero-grid{gap:0}h1{font-size:clamp(3.15rem,15vw,4.65rem);line-height:.95}.hero p{font-size:.96rem}.actions .btn{flex:1 1 100%}.micro{gap:7px}.micro span{font-size:.55rem;padding:7px 9px}.visual{min-height:320px;margin-top:12px}.orbit{width:290px}.halo{width:220px;height:220px}.mock{width:min(100%,330px);padding:22px;border-radius:22px}.mock-icon{width:58px;height:58px;margin:20px 0 14px}.section{padding:55px 0}.section-head{margin-bottom:26px}.section-head h2{font-size:2.35rem}.cards,.project-grid,.leadership,.process-grid{grid-template-columns:1fr}.card{min-height:0;padding:24px}.project{min-height:220px;padding:24px}.leader-card{padding:24px}.values{grid-template-columns:1fr 1fr}.community{padding:26px;gap:20px}.community .btn{width:100%}.contact-grid{gap:24px}.contact-form{padding:20px}.footer-row{gap:16px}.footer-links{flex-wrap:wrap;gap:13px}.process-step{min-height:0;padding:23px}.faq-list summary{padding:18px 48px 18px 18px}.faq-answer{padding:0 18px 18px}}
-    @media(max-width:380px){.values{grid-template-columns:1fr}.micro span{letter-spacing:.07em}}
-    @media(prefers-reduced-motion:reduce){.mock,.orbit,.halo,.gradient{animation:none!important}.reveal{opacity:1;transform:none;transition:none}}
-
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050914">
+<meta name="description" content="Botsy Studios creates custom Discord bots, server systems and digital solutions. Your vision. Our creation.">
+<meta property="og:title" content="Botsy Studios — Your vision. Our creation.">
+<meta property="og:description" content="Custom Discord bots, server systems and digital solutions built around your community.">
+<meta property="og:type" content="website">
+<title>Botsy Studios — Your vision. Our creation.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#050914;--surface:#0b1426;--surface2:#101e35;--line:#9ab9e522;--text:#f4f7ff;--muted:#9aaac3;--blue:#287dff;--cyan:#57d7ff;--max:1180px;font-family:"DM Sans",sans-serif;color:var(--text);background:var(--bg);font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;min-width:320px;background:radial-gradient(ellipse at 70% 0,#123c7a30,transparent 35%),radial-gradient(ellipse at 0 60%,#092d5a1c,transparent 30%),var(--bg)}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+#scroll-progress{position:fixed;z-index:1001;inset:0 auto auto 0;width:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 18px #2583ff;pointer-events:none}
+.header{position:sticky;top:0;z-index:100;background:#050914d9;border-bottom:1px solid var(--line);backdrop-filter:blur(20px)}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px}.brand{display:flex;align-items:center;gap:11px;font:700 1.05rem "Space Grotesk";letter-spacing:-.04em}.brand-mark{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#54c8ff,#1552d9);box-shadow:0 0 28px #2583ff55;color:white;font-size:1.2rem}.brand-name span{color:#69baff}.links{display:flex;align-items:center;gap:21px;color:#b8c7dd;font-size:.82rem}.links a{transition:color .2s}.links a:hover{color:var(--cyan)}.btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 19px;border:1px solid transparent;border-radius:9px;font-weight:700;font-size:.88rem;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}.btn:hover{transform:translateY(-3px)}.primary{background:linear-gradient(110deg,#167cff,#3159e8);box-shadow:0 8px 28px #1677ff40;color:white}.primary:hover{box-shadow:0 12px 35px #1677ff70}.secondary{border-color:#8bb9ef38;background:#ffffff08}.secondary:hover{border-color:#58aaffaa}.menu{display:none}
+.hero{position:relative;min-height:690px;display:flex;align-items:center;overflow:hidden;padding:82px 0 76px}.hero:before{position:absolute;content:"";width:660px;height:660px;right:-220px;top:-180px;border-radius:50%;background:radial-gradient(circle,#1677ff2b,transparent 67%);pointer-events:none}.hero:after{position:absolute;right:0;bottom:0;left:0;height:1px;content:"";background:linear-gradient(90deg,transparent,#388fff66,transparent)}.hero-grid{position:relative;display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:58px}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:#83bfff;font-size:.7rem;font-weight:700;letter-spacing:.19em;text-transform:uppercase}.eyebrow:before{width:24px;height:1px;background:var(--cyan);content:""}.hero h1{max-width:720px;margin:24px 0;font:700 clamp(3.6rem,7.5vw,6.7rem)/.93 "Space Grotesk";letter-spacing:-.085em}.gradient{color:transparent;background:linear-gradient(100deg,#fff 5%,#8fcaff 55%,#50d9ff);background-clip:text;-webkit-background-clip:text}.hero-copy{max-width:550px;color:#aab9d0;font-size:1.06rem;line-height:1.85}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.micro{display:flex;flex-wrap:wrap;gap:10px;margin-top:35px}.micro span{padding:8px 11px;border:1px solid var(--line);border-radius:5px;background:#ffffff05;color:#93a8c7;font-size:.61rem;font-weight:700;letter-spacing:.12em}
+.hero-art{position:relative;min-height:490px;display:grid;place-items:center}.art-grid{position:absolute;inset:5% 0;background-image:linear-gradient(#72aaff0c 1px,transparent 1px),linear-gradient(90deg,#72aaff0c 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse,#000 15%,transparent 72%)}.art-ring{position:absolute;width:390px;aspect-ratio:1;border:1px solid #5baaff4a;border-radius:50%;box-shadow:0 0 55px #1677ff12,inset 0 0 55px #1677ff0d;transform:rotate(-25deg) scaleY(.76)}.art-ring:before,.art-ring:after{position:absolute;inset:24px -24px;border:1px solid #5baaff25;border-radius:50%;content:""}.art-ring:after{inset:-22px 48px}.art-core{position:relative;width:min(100%,360px);padding:25px;border:1px solid #7bbaff55;border-radius:19px;background:linear-gradient(145deg,#142c4cF2,#081326F5);box-shadow:0 35px 100px #0009,0 0 55px #1677ff20;backdrop-filter:blur(18px);transform:rotate(2deg)}.core-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:17px;border-bottom:1px solid var(--line);font-size:.7rem;font-weight:700;letter-spacing:.1em}.live{color:#7ee3b2}.live:before{display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#54d99a;box-shadow:0 0 12px #54d99a;content:""}.core-symbol{width:65px;height:65px;display:grid;place-items:center;margin:25px 0 17px;border:1px solid #61b2ff66;border-radius:17px;background:#1677ff25;color:#a9d7ff;font:700 1.8rem "Space Grotesk";box-shadow:0 0 30px #1677ff20}.art-core h3{margin:0 0 8px;font:600 1.4rem "Space Grotesk"}.art-core p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.7}.core-bars{display:grid;gap:9px;margin-top:24px}.core-bars i{height:6px;border-radius:9px;background:linear-gradient(90deg,#318dffb0,#318dff10)}.core-bars i:nth-child(2){width:76%;opacity:.7}.core-bars i:nth-child(3){width:52%;opacity:.45}.float-tag{position:absolute;padding:11px 14px;border:1px solid #74b5ff44;border-radius:9px;background:#0b1b32e8;color:#c9e4ff;font-size:.7rem;font-weight:700;box-shadow:0 12px 35px #0006;backdrop-filter:blur(12px)}.tag-one{top:12%;right:0}.tag-two{bottom:12%;left:0}
+.trust-strip{border-bottom:1px solid var(--line);background:#081225}.trust-row{display:grid;grid-template-columns:repeat(3,1fr);padding:22px 0}.trust-item{padding:4px 25px;border-right:1px solid var(--line)}.trust-item:first-child{padding-left:0}.trust-item:last-child{border:0}.trust-item strong{display:block;color:#eaf3ff;font:600 1rem "Space Grotesk"}.trust-item span{display:block;margin-top:5px;color:#7f91ad;font-size:.72rem}
+.section{padding:100px 0}.section.alt{border-block:1px solid #9ab9e514;background:linear-gradient(180deg,#0b1629b0,#07101e80)}.section-head{max-width:690px;margin-bottom:42px}.section-head h2{margin:15px 0;font:700 clamp(2.4rem,4.8vw,4rem)/1.02 "Space Grotesk";letter-spacing:-.07em}.section-head p{margin:0;color:var(--muted);line-height:1.8}.service-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:17px}.service-main,.service-mini{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#10213bdd,#091426e8);transition:.25s}.service-main{min-height:330px;display:flex;flex-direction:column;justify-content:space-between;padding:32px}.service-main:after{position:absolute;right:-80px;bottom:-130px;width:360px;height:360px;border:1px solid #5baaff24;border-radius:50%;box-shadow:0 0 0 30px #5baaff08,0 0 0 70px #5baaff05;content:""}.service-side{display:grid;gap:17px}.service-mini{min-height:156px;padding:25px}.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover{transform:translateY(-5px);border-color:#61aaff88;box-shadow:0 20px 55px #0005,0 0 25px #1677ff16}.service-icon{width:48px;height:48px;display:grid;place-items:center;border:1px solid #398dff55;border-radius:13px;background:#1677ff20;color:#a8d1ff;font-size:1.3rem}.service-main h3,.service-mini h3{margin:17px 0 9px;font:600 1.35rem "Space Grotesk"}.service-main p,.service-mini p{max-width:530px;margin:0;color:var(--muted);font-size:.9rem;line-height:1.8}.service-kicker{color:#7fbaff;font-size:.67rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.price-card{position:relative;min-height:290px;padding:27px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#10213ddd,#091426);transition:.25s}.price-card.featured{border-color:#398dff88;background:radial-gradient(ellipse at 100% 0,#1677ff26,transparent 55%),linear-gradient(145deg,#112849,#091426)}.price-card .service-icon{margin-bottom:22px}.price-card h3{margin:0 0 12px;font:600 1.08rem "Space Grotesk"}.price{margin:19px 0;color:#a9d3ff;font:700 2.25rem "Space Grotesk";letter-spacing:-.06em}.price small{color:#9aabc4;font:500 .8rem "DM Sans";letter-spacing:0}.price-card p{color:var(--muted);font-size:.85rem;line-height:1.75}.price-note{margin-top:17px;padding:19px 21px;border-left:2px solid #398dff;border-radius:0 9px 9px 0;background:#0d1c31;color:#9eafc8;font-size:.8rem;line-height:1.8}.portfolio-layout{display:grid;grid-template-columns:.75fr 1.25fr;gap:30px;align-items:stretch}.portfolio-intro{display:flex;flex-direction:column;justify-content:space-between}.portfolio-intro .section-head{margin:0}.project-stack{display:grid;gap:15px}.project-panel{min-height:185px;display:flex;flex-direction:column;justify-content:space-between;padding:25px;border:1px solid var(--line);border-radius:13px;background:radial-gradient(ellipse at 100% 0,#1677ff2b,transparent 48%),#0c192d;transition:.25s}.project-panel h3{margin:10px 0;font:600 1.25rem "Space Grotesk"}.project-panel p{max-width:470px;margin:0;color:var(--muted);font-size:.86rem;line-height:1.7}.project-label{color:#82bdff;font-size:.66rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}.coming{margin-top:20px;color:#8196b5;font-size:.7rem}
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}.about-copy{color:var(--muted);line-height:1.9}.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}.value{padding:17px;border:1px solid var(--line);border-radius:10px;background:#ffffff05}.value strong{display:block;margin-bottom:6px;color:#eaf3ff;font:600 .95rem "Space Grotesk"}.value span{color:var(--muted);font-size:.8rem;line-height:1.6}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.leader-card{position:relative;overflow:hidden;padding:27px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,#10213ddd,#091426);transition:.25s}.leader-card:before{position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#4da5ff,transparent);content:""}.rank{display:inline-block;margin:0 0 20px;padding:6px 10px;border:1px solid #579fff44;border-radius:4px;background:#1677ff18;color:#a8d1ff;font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.leader-card h3{margin:0 0 5px;font:600 1.2rem "Space Grotesk"}.username{margin:0 0 15px;color:#8dbfff;font-size:.78rem}.leader-card p:last-child{margin:0;color:var(--muted);font-size:.84rem;line-height:1.7}
+.review-panel{padding:30px;border:1px dashed #6a9bd75c;border-radius:13px;background:#0c1a2d;color:var(--muted);line-height:1.8}.review-panel strong{display:block;margin-bottom:7px;color:white;font:600 1.05rem "Space Grotesk"}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;counter-reset:steps}.process-step{min-height:205px;padding:23px;border:1px solid var(--line);border-radius:12px;background:#0c192c;counter-increment:steps;transition:.25s}.process-step:before{display:block;margin-bottom:27px;color:#65b4ff;font:700 1.7rem "Space Grotesk";content:"0" counter(steps)}.process-step h3{margin:0 0 9px;font:600 1.05rem "Space Grotesk"}.process-step p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.75}
+.faq-list{border-top:1px solid var(--line)}.faq-list details{border-bottom:1px solid var(--line)}.faq-list summary{position:relative;padding:21px 48px 21px 4px;list-style:none;cursor:pointer;color:#eaf2ff;font:600 1rem "Space Grotesk"}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{position:absolute;right:8px;top:17px;color:#7dbaff;font-size:1.4rem;content:"+"}.faq-list details[open] summary:after{content:"−"}.faq-answer{max-width:760px;padding:0 40px 21px 4px;color:var(--muted);font-size:.9rem;line-height:1.8}
+.community{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:40px;border:1px solid #438fff66;border-radius:15px;background:radial-gradient(ellipse at 100% 0,#1677ff40,transparent 50%),linear-gradient(110deg,#102748,#091426)}.community h2{margin:14px 0;font:700 clamp(2rem,4vw,3rem) "Space Grotesk";letter-spacing:-.06em}.community p{max-width:640px;margin:0;color:var(--muted);line-height:1.8}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:55px;align-items:start}.contact-copy h2{margin:15px 0;font:700 clamp(2.4rem,4.5vw,3.7rem)/1.02 "Space Grotesk";letter-spacing:-.07em}.contact-copy p{color:var(--muted);line-height:1.8}.contact-form{display:grid;gap:14px;padding:27px;border:1px solid #70aaff36;border-radius:14px;background:linear-gradient(145deg,#10213ddd,#081426)}.field{display:grid;gap:8px}.field label{color:#dce8fb;font-size:.82rem;font-weight:600}.field input,.field select,.field textarea{width:100%;padding:13px;border:1px solid #9dbbe72b;border-radius:8px;outline:none;background:#061124;color:white}.field input:focus,.field select:focus,.field textarea:focus{border-color:#4d9bff;box-shadow:0 0 0 3px #2583ff20}.field textarea{min-height:135px;resize:vertical}.form-note{margin:0;color:#8297b5;font-size:.75rem;line-height:1.65}.form-status{min-height:20px;margin:0;color:#9bd0ff;font-size:.82rem}
+footer{padding:30px 0;border-top:1px solid var(--line);background:#030712}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;color:#8293ad;font-size:.77rem}.footer-links{display:flex;flex-wrap:wrap;gap:18px}.footer-links a:hover{color:var(--cyan)}
+#back-top{position:fixed;right:22px;bottom:22px;z-index:50;width:44px;height:44px;border:1px solid #75baff55;border-radius:10px;background:#0d1c32;color:white;font-size:1.2rem;opacity:0;pointer-events:none;transform:translateY(10px);transition:.2s}#back-top.visible{opacity:1;pointer-events:auto;transform:none}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+#botsy-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(ellipse at center,#10284a,#071326 45%,#030916);transition:opacity .4s,visibility .4s}#botsy-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}.loader-inner{display:grid;justify-items:center;gap:17px}.loader-emblem{position:relative;width:100px;height:100px;display:grid;place-items:center}.loader-emblem:before,.loader-emblem:after{position:absolute;inset:1px;border:2px solid transparent;border-top-color:#65c8ff;border-right-color:#2583ff;border-radius:50%;content:"";animation:spin 1.3s linear infinite}.loader-emblem:after{inset:10px;border-width:1px;border-top-color:white;border-left-color:#55d5ff;animation-duration:2s;animation-direction:reverse}.loader-core{width:62px;height:62px;display:grid;place-items:center;border:1px solid #8ccaff88;border-radius:17px;background:linear-gradient(145deg,#248fff,#123c9c);box-shadow:0 0 35px #1677ff77;color:white;font:700 1.2rem "Space Grotesk"}.loader-name{font:700 .8rem "Space Grotesk";letter-spacing:.2em}.loader-name span{color:#75baff}.loader-caption{color:#829cbd;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-12px) rotate(1deg)}}@keyframes orbit{to{transform:rotate(335deg) scaleY(.76)}}
+.art-core{animation:float 6s ease-in-out infinite}.art-ring{animation:orbit 34s linear infinite}
+@media(max-width:1000px){.links{gap:12px;font-size:.74rem}.hero-grid{gap:25px}.hero{min-height:620px}.art-ring{width:330px}.service-layout{grid-template-columns:1fr}.service-side{grid-template-columns:1fr 1fr}.process-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.wrap{width:calc(100% - 36px)}.nav{height:70px}.menu{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:9px;background:#0c192c;color:white}.links{position:absolute;top:70px;left:0;right:0;display:none;align-items:stretch;gap:0;padding:8px 18px 17px;border-bottom:1px solid var(--line);background:#050b18f7}.links.open{display:flex;flex-direction:column}.links a{padding:12px 4px}.nav-cta{display:none}.hero{min-height:0;padding:72px 0 52px}.hero-grid{grid-template-columns:1fr;gap:0}.hero h1{font-size:clamp(3.4rem,15vw,5rem)}.hero-copy{font-size:.98rem}.actions .btn{flex:1 1 auto}.hero-art{min-height:370px;margin-top:18px}.art-ring{width:290px}.art-core{width:min(100%,330px)}.tag-one{right:-2px}.tag-two{left:-2px}.trust-row{grid-template-columns:1fr;gap:13px;padding:18px 0}.trust-item,.trust-item:first-child{padding:0;border:0}.section{padding:70px 0}.section-head{margin-bottom:28px}.section-head h2{font-size:2.55rem}.service-side{grid-template-columns:1fr}.service-main{min-height:280px;padding:25px}.service-mini{min-height:0;padding:23px}.price-grid,.team-grid{grid-template-columns:1fr}.price-card{min-height:0}.portfolio-layout,.about-grid,.contact-grid{grid-template-columns:1fr;gap:28px}.portfolio-intro{gap:20px}.project-panel{min-height:165px}.values{grid-template-columns:1fr 1fr}.community{align-items:flex-start;flex-direction:column;padding:27px}.community .btn{width:100%}.footer-row{align-items:flex-start;flex-direction:column}.footer-links{gap:14px}.contact-form{padding:21px}}
+@media(max-width:420px){.values{grid-template-columns:1fr}.micro span{font-size:.55rem}.actions .btn{width:100%}.hero-art{min-height:330px}.float-tag{font-size:.62rem;padding:9px 10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
 <body>
 <div id="scroll-progress" aria-hidden="true"></div>
-<div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
-<div id="botsy-loader" role="status" aria-label="Loading Botsy Studios">
-  <div class="loader-inner">
-    <div class="loader-emblem"><div class="loader-core">BS</div></div>
-    <div class="loader-name">BOTSY <span>STUDIOS</span></div>
-    <div class="loader-caption">Preparing your experience</div>
-  </div>
-</div>
-
+<div id="botsy-loader" role="status" aria-label="Loading Botsy Studios"><div class="loader-inner"><div class="loader-emblem"><div class="loader-core">BS</div></div><div class="loader-name">BOTSY <span>STUDIOS</span></div><div class="loader-caption">Preparing your experience</div></div></div>
 <header class="header"><div class="wrap nav">
-  <a class="brand" href="#home" aria-label="Botsy Studios home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a>
-  <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
-  <nav class="links" id="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="dashboard.html">Client Portal ↗</a></nav>
-  <a class="btn primary nav-cta" href="dashboard.html">Client Portal ↗</a>
+<a class="brand" href="#home" aria-label="Botsy Studios home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a>
+<button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+<nav class="links" id="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="dashboard.html">Client Portal ↗</a></nav>
+<a class="btn primary nav-cta" href="dashboard.html">Client Portal ↗</a>
 </div></header>
 <main>
-  <section class="hero" id="home"><div class="wrap hero-grid">
-    <div><div class="eyebrow">Discord development · Digital solutions</div>
-      <h1><span class="gradient">Your vision.<br>Our creation.</span></h1>
-      <p>We turn ideas into polished digital experiences. From custom Discord bots to complete server systems, Botsy Studios builds solutions designed around your community.</p>
-      <div class="actions"><a class="btn primary" href="#contact">Start a project ↗</a><a class="btn secondary" href="dashboard.html">Client Dashboard ↗</a><a class="btn secondary" href="#services">Explore services ↓</a></div>
-      <div class="micro"><span>CREATIVE THINKING</span><span>CUSTOM BUILDS</span><span>COMMUNITY FIRST</span></div>
-    </div>
-    <div class="visual" role="img" aria-label="Abstract Botsy Studios digital systems artwork"><div class="orbit"></div><div class="halo"></div><div class="mock">
-      <div class="mock-top"><span>BOTSY / STUDIO</span><span class="live">CREATING</span></div><div class="mock-icon">B.</div><h3>Built around your vision.</h3><p>Custom technology, thoughtful design and digital systems that work for your community.</p><div class="bars" aria-hidden="true"><i></i><i></i><i></i></div>
-    </div></div>
-  </div></section>
-
-  <section class="section alt" id="services"><div class="wrap">
-    <div class="section-head"><div class="eyebrow">What we do</div><h2>Solutions built for the way you work.</h2><p>Practical, custom-built services for Discord communities and businesses looking to create a better digital experience.</p></div>
-    <div class="cards">
-      <article class="card"><div class="icon">⌘</div><h3>Discord Bot Development</h3><p>Custom Discord bots designed around your requirements, workflows and community needs.</p></article>
-      <article class="card"><div class="icon">◈</div><h3>Server Setup</h3><p>Complete server setup, including channels, roles, permissions and organized community structure.</p></article>
-      <article class="card"><div class="icon">⟷</div><h3>Custom Systems & Setup</h3><p>Purpose-built Discord systems, advanced configurations and other custom development work.</p></article>
-    </div>
-  </div></section>
-
-  <section class="section" id="pricing"><div class="wrap">
-    <div class="section-head"><div class="eyebrow">Straightforward starting prices</div><h2>Choose a starting point.</h2><p>Every project is different. These are starting prices, not fixed quotes.</p></div>
-    <div class="cards">
-      <article class="card"><div class="icon">⌘</div><h3>Discord Bot Development</h3><div style="font:700 2rem 'Space Grotesk';margin:12px 0;color:#9acaff">From 200 <span style="font-size:.9rem;color:#a6b5cc">Robux</span></div><p>Final pricing depends on the bot's features, complexity and development requirements.</p></article>
-      <article class="card"><div class="icon">◈</div><h3>Discord Server Setup</h3><div style="font:700 2rem 'Space Grotesk';margin:12px 0;color:#9acaff">From 400 <span style="font-size:.9rem;color:#a6b5cc">Robux</span></div><p>Final pricing depends on server size, structure, permissions and requested systems.</p></article>
-      <article class="card"><div class="icon">✦</div><h3>Custom Projects & Setup</h3><div style="font:700 1.65rem 'Space Grotesk';margin:12px 0;color:#9acaff">Custom Quote</div><p>Other services and advanced custom setups are priced individually after reviewing your requirements.</p></article>
-    </div>
-    <div class="review-box" style="margin-top:18px"><strong>Pricing notice</strong>All listed prices are starting estimates and are not fixed. Prices may change depending on project requirements, complexity and the developer handling the work. The final price and accepted payment method will be confirmed by a developer or management team in your Discord ticket before the order is approved.</div>
-  </div></section>
-
-  <section class="section" id="portfolio"><div class="wrap">
-    <div class="section-head"><div class="eyebrow">Our portfolio</div><h2>Made with purpose. Built with care.</h2><p>We’re preparing our public project showcase. This section will feature selected Botsy Studios work as projects are approved for publication.</p></div>
-    <div class="project-grid">
-      <article class="project"><div><div class="project-label">Discord bot development</div><h3>Custom bot solutions</h3><p>Tailored bot features and automation designed around each community’s needs.</p></div><small>Project showcase coming soon</small></article>
-      <article class="project"><div><div class="project-label">Server systems</div><h3>Community infrastructure</h3><p>Organized server structures and custom management systems for growing communities.</p></div><small>Project showcase coming soon</small></article>
-    </div>
-  </div></section>
-
-  <section class="section alt" id="about"><div class="wrap split">
-    <div class="section-head"><div class="eyebrow">About Botsy Studios</div><h2>Ideas deserve more than ordinary solutions.</h2></div>
-    <div class="copy"><p>Botsy Studios is a digital development studio focused on Discord bot development, server setup and custom Discord systems. We work with communities and businesses to turn their ideas into useful, well-designed solutions.</p><p>Our approach is built on understanding what each project needs, communicating clearly and creating systems that are practical to use.</p>
-      <div class="values"><div class="value"><strong>Purposeful</strong><span>Solutions shaped around real requirements.</span></div><div class="value"><strong>Reliable</strong><span>Careful implementation and clear communication.</span></div><div class="value"><strong>Collaborative</strong><span>Working with clients from idea to delivery.</span></div><div class="value"><strong>Progressive</strong><span>Always learning and improving what we build.</span></div></div>
-    </div>
-  </div></section>
-
-  <section class="section" id="team"><div class="wrap">
-    <div class="section-head reveal"><div class="eyebrow">The people behind Botsy</div><h2>Meet the Ownership Team.</h2><p>The leadership behind Botsy Studios, guiding its vision, direction and growth.</p></div>
-    <div class="leadership">
-      <article class="leader-card reveal"><div class="icon">♛</div><div class="leader-rank">Founder</div><h3>TheRealShubz</h3><p class="username">@TheRealShubz</p><p>Leads the studio’s vision, direction and overall leadership.</p></article>
-      <article class="leader-card reveal"><div class="icon">✦</div><div class="leader-rank">Co-Founder</div><h3>Inan_2fun</h3><p class="username">@Inan_2fun</p><p>Helps shape the studio’s direction and supports its continued growth.</p></article>
-      <article class="leader-card reveal"><div class="icon">◆</div><div class="leader-rank">Owner</div><h3>JulienBen</h3><p class="username">@JulienBen</p><p>Supports ownership and the day-to-day direction of Botsy Studios.</p></article>
-    </div>
-  </div></section>
-
-  <section class="section alt" id="reviews"><div class="wrap">
-    <div class="section-head"><div class="eyebrow">Client feedback</div><h2>Trust is built through good work.</h2><p>We want every review to reflect a real customer experience.</p></div>
-    <div class="review-box"><strong>Customer reviews are coming soon.</strong>Once clients have shared feedback that we have permission to publish, their genuine testimonials will appear here. We don’t use invented reviews or ratings.</div>
-  </div></section>
-
-  <section class="section" id="process"><div class="wrap">
-    <div class="section-head"><div class="eyebrow">A clear process</div><h2>From first idea to finished system.</h2><p>Every project moves through a straightforward process, so expectations, communication and delivery stay clear.</p></div>
-    <div class="process-grid">
-      <article class="process-step"><h3>Discover</h3><p>Tell us what you want to build, who it is for and what the finished result should do.</p></article>
-      <article class="process-step"><h3>Plan</h3><p>We review the requirements, confirm scope and agree on the quote and timeline in your ticket.</p></article>
-      <article class="process-step"><h3>Create</h3><p>Our team develops and configures the agreed solution, keeping communication clear as work progresses.</p></article>
-      <article class="process-step"><h3>Deliver</h3><p>We share the completed work and any relevant handover information through your project ticket.</p></article>
-    </div>
-  </div></section>
-
-  <section class="section alt" id="faq"><div class="wrap">
-    <div class="section-head"><div class="eyebrow">Quick answers</div><h2>Frequently asked questions.</h2><p>A few helpful details before you start a project with Botsy Studios.</p></div>
-    <div class="faq-list">
-      <details><summary>How do I place an order?</summary><div class="faq-answer">Join our Discord server and open a ticket. Tell our team what you need, and we’ll discuss the requirements and next steps there.</div></details>
-      <details><summary>Are the prices fixed?</summary><div class="faq-answer">No. Prices shown on this website are starting estimates. Your final quote depends on the features, complexity and scope of the project.</div></details>
-      <details><summary>How do I pay?</summary><div class="faq-answer">Accepted payment methods and the final price are confirmed by our team in your Discord ticket before an order is approved.</div></details>
-      <details><summary>Can I track my project?</summary><div class="faq-answer">Use the Client Portal to access the available client features. Project updates and communication are handled through your Discord ticket.</div></details>
-      <details><summary>Can I request a custom system?</summary><div class="faq-answer">Yes. Open a ticket and describe your idea. Our team can review custom requirements and let you know what is possible.</div></details>
-    </div>
-  </div></section>
-
-  <section class="section" id="community"><div class="wrap"><div class="community">
-    <div><div class="eyebrow">Join the community</div><h2>Connect with Botsy Studios.</h2><p>Visit our Discord server to learn more, talk with the team, ask questions or open a ticket for your project.</p></div>
-    <a class="btn primary" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Join Discord ↗</a>
-  </div></div></section>
-
-  <section class="section alt" id="contact"><div class="wrap contact-grid">
-    <div class="contact-copy"><div class="eyebrow">Start a project</div><h2 style="font:700 clamp(2.2rem,4vw,3.2rem) 'Space Grotesk';letter-spacing:-.06em;margin:14px 0">Tell us what you have in mind.</h2><p>Share a few details below. We’ll prepare your enquiry so you can send it to our team through a Discord ticket.</p><p>Prefer to go straight to Discord? <a href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer" style="color:#91c5ff">Join the server here ↗</a></p></div>
-    <form class="contact-form" id="enquiry-form">
-      <div class="field"><label for="service">What do you need?</label><select id="service" required><option value="">Select a service</option><option>Discord bot development</option><option>Discord server setup and management</option><option>Custom Discord systems</option><option>Other enquiry</option></select></div>
-      <div class="field"><label for="project">Tell us about your project</label><textarea id="project" required maxlength="1200" placeholder="Describe your idea, requirements or questions..."></textarea></div>
-      <button class="btn primary" type="submit">Prepare Discord enquiry ↗</button>
-      <p class="form-note">This form does not send or store your details. It prepares a message for you to copy, then opens our Discord invite so you can submit it in a ticket.</p>
-      <p class="form-status" id="form-status" aria-live="polite"></p>
-    </form>
-  </div></section>
+<section class="hero" id="home"><div class="wrap hero-grid">
+<div><div class="eyebrow">Independent digital development studio</div><h1><span class="gradient">Your vision.<br>Our creation.</span></h1><p class="hero-copy">We turn ideas into polished digital experiences. From custom Discord bots to complete server systems, Botsy Studios builds solutions designed around your community.</p><div class="actions"><a class="btn primary" href="#contact">Start a project ↗</a><a class="btn secondary" href="#services">Explore what we do ↓</a></div><div class="micro"><span>CREATIVE THINKING</span><span>CUSTOM BUILDS</span><span>COMMUNITY FIRST</span></div></div>
+<div class="hero-art" role="img" aria-label="Botsy Studios digital systems artwork"><div class="art-grid"></div><div class="art-ring"></div><div class="float-tag tag-one">✦ BUILT TO FIT</div><div class="float-tag tag-two">⌘ CUSTOM SYSTEMS</div><div class="art-core"><div class="core-head"><span>BOTSY / STUDIO</span><span class="live">CREATING</span></div><div class="core-symbol">B.</div><h3>Built around your vision.</h3><p>Thoughtful design. Custom technology. Systems that work for your community.</p><div class="core-bars"><i></i><i></i><i></i></div></div></div>
+</div></section>
+<div class="trust-strip"><div class="wrap trust-row"><div class="trust-item"><strong>Made around your needs</strong><span>No one-size-fits-all builds</span></div><div class="trust-item"><strong>Clear project communication</strong><span>Requirements and updates in your ticket</span></div><div class="trust-item"><strong>Built for communities</strong><span>Practical systems with purpose</span></div></div></div>
+<section class="section alt" id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">What we do</div><h2>Technology that works the way you do.</h2><p>Practical, custom-built services for Discord communities and businesses looking to create a better digital experience.</p></div>
+<div class="service-layout"><article class="service-main"><div><div class="service-icon">⌘</div><div class="service-kicker">01 / Core service</div><h3>Discord Bot Development</h3><p>Custom Discord bots designed around your requirements, workflows and community needs — from moderation and staff tools to complete automated systems.</p></div><span class="service-kicker">CUSTOM FEATURES · AUTOMATION · INTEGRATIONS</span></article><div class="service-side"><article class="service-mini"><div class="service-icon">◈</div><h3>Server Setup</h3><p>Complete server setup, including channels, roles, permissions and organized community structure.</p></article><article class="service-mini"><div class="service-icon">⟷</div><h3>Custom Systems & Setup</h3><p>Purpose-built Discord systems, advanced configurations and other custom development work.</p></article></div></div>
+</div></section>
+<section class="section" id="pricing"><div class="wrap"><div class="section-head"><div class="eyebrow">Straightforward starting prices</div><h2>A clear place to start.</h2><p>Every project is different. These are starting prices, not fixed quotes.</p></div>
+<div class="price-grid"><article class="price-card featured"><div class="service-icon">⌘</div><h3>Discord Bot Development</h3><div class="price">200 <small>Robux · from</small></div><p>Final pricing depends on the bot's features, complexity and development requirements.</p></article><article class="price-card"><div class="service-icon">◈</div><h3>Discord Server Setup</h3><div class="price">400 <small>Robux · from</small></div><p>Final pricing depends on server size, structure, permissions and requested systems.</p></article><article class="price-card"><div class="service-icon">✦</div><h3>Custom Projects & Setup</h3><div class="price">Custom <small>quote</small></div><p>Other services and advanced custom setups are priced individually after reviewing your requirements.</p></article></div>
+<div class="price-note"><strong>Pricing notice:</strong> All listed prices are starting estimates and are not fixed. Prices may change depending on project requirements, complexity and the developer handling the work. The final price and accepted payment method will be confirmed by a developer or management team in your Discord ticket before the order is approved.</div>
+</div></section>
+<section class="section alt" id="portfolio"><div class="wrap portfolio-layout"><div class="portfolio-intro"><div class="section-head"><div class="eyebrow">Selected work</div><h2>Made with purpose. Built with care.</h2><p>Our public showcase will feature selected Botsy Studios work as projects are approved for publication.</p></div><span class="coming">PORTFOLIO / UPDATES COMING SOON</span></div><div class="project-stack"><article class="project-panel"><div><div class="project-label">01 / Discord bot development</div><h3>Custom bot solutions</h3><p>Tailored bot features and automation designed around each community’s needs.</p></div><span class="coming">PROJECT SHOWCASE COMING SOON ↗</span></article><article class="project-panel"><div><div class="project-label">02 / Server systems</div><h3>Community infrastructure</h3><p>Organized server structures and custom management systems for growing communities.</p></div><span class="coming">PROJECT SHOWCASE COMING SOON ↗</span></article></div></div></section>
+<section class="section" id="about"><div class="wrap about-grid"><div class="section-head"><div class="eyebrow">About Botsy Studios</div><h2>Ideas deserve more than ordinary solutions.</h2></div><div class="about-copy"><p>Botsy Studios is a digital development studio focused on Discord bot development, server setup and custom Discord systems. We work with communities and businesses to turn their ideas into useful, well-designed solutions.</p><p>Our approach is built on understanding what each project needs, communicating clearly and creating systems that are practical to use.</p><div class="values"><div class="value"><strong>Purposeful</strong><span>Solutions shaped around real requirements.</span></div><div class="value"><strong>Reliable</strong><span>Careful implementation and clear communication.</span></div><div class="value"><strong>Collaborative</strong><span>Working with clients from idea to delivery.</span></div><div class="value"><strong>Progressive</strong><span>Always learning and improving what we build.</span></div></div></div></div></section>
+<section class="section alt" id="team"><div class="wrap"><div class="section-head"><div class="eyebrow">The people behind Botsy</div><h2>Meet the Ownership Team.</h2><p>The leadership behind Botsy Studios, guiding its vision, direction and growth.</p></div><div class="team-grid"><article class="leader-card"><div class="rank">Founder</div><h3>TheRealShubz</h3><p class="username">@TheRealShubz</p><p>Leads the studio’s vision, direction and overall leadership.</p></article><article class="leader-card"><div class="rank">Co-Founder</div><h3>Inan_2fun</h3><p class="username">@Inan_2fun</p><p>Helps shape the studio’s direction and supports its continued growth.</p></article><article class="leader-card"><div class="rank">Owner</div><h3>JulienBen</h3><p class="username">@JulienBen</p><p>Supports ownership and the day-to-day direction of Botsy Studios.</p></article></div></div></section>
+<section class="section" id="reviews"><div class="wrap"><div class="section-head"><div class="eyebrow">Client feedback</div><h2>Trust is built through good work.</h2><p>We want every review to reflect a real customer experience.</p></div><div class="review-panel"><strong>Customer reviews are coming soon.</strong>Once clients have shared feedback that we have permission to publish, their genuine testimonials will appear here. We don’t use invented reviews or ratings.</div></div></section>
+<section class="section alt" id="process"><div class="wrap"><div class="section-head"><div class="eyebrow">How it works</div><h2>From first idea to finished system.</h2><p>A straightforward process keeps expectations, communication and delivery clear.</p></div><div class="process-grid"><article class="process-step"><h3>Discover</h3><p>Tell us what you want to build, who it is for and what the finished result should do.</p></article><article class="process-step"><h3>Plan</h3><p>We review the requirements, confirm scope and agree on the quote and timeline in your ticket.</p></article><article class="process-step"><h3>Create</h3><p>Our team develops and configures the agreed solution, keeping communication clear as work progresses.</p></article><article class="process-step"><h3>Deliver</h3><p>We share the completed work and any relevant handover information through your project ticket.</p></article></div></div></section>
+<section class="section" id="faq"><div class="wrap"><div class="section-head"><div class="eyebrow">Quick answers</div><h2>Frequently asked questions.</h2><p>A few helpful details before you start a project with Botsy Studios.</p></div><div class="faq-list"><details><summary>How do I place an order?</summary><div class="faq-answer">Join our Discord server and open a ticket. Tell our team what you need, and we’ll discuss the requirements and next steps there.</div></details><details><summary>Are the prices fixed?</summary><div class="faq-answer">No. Prices shown on this website are starting estimates. Your final quote depends on the features, complexity and scope of the project.</div></details><details><summary>How do I pay?</summary><div class="faq-answer">Accepted payment methods and the final price are confirmed by our team in your Discord ticket before an order is approved.</div></details><details><summary>Can I track my project?</summary><div class="faq-answer">Use the Client Portal to access the available client features. Project updates and communication are handled through your Discord ticket.</div></details><details><summary>Can I request a custom system?</summary><div class="faq-answer">Yes. Open a ticket and describe your idea. Our team can review custom requirements and let you know what is possible.</div></details></div></div></section>
+<section class="section alt" id="community"><div class="wrap"><div class="community"><div><div class="eyebrow">Join the community</div><h2>Good ideas start with a conversation.</h2><p>Visit our Discord server to learn more, talk with the team, ask questions or open a ticket for your project.</p></div><a class="btn primary" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Join Discord ↗</a></div></div></section>
+<section class="section" id="contact"><div class="wrap contact-grid"><div class="contact-copy"><div class="eyebrow">Start a project</div><h2>Let's build something useful.</h2><p>Share a few details below. We’ll prepare your enquiry so you can send it to our team through a Discord ticket.</p><p>Prefer to go straight to Discord? <a href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer" style="color:#91c5ff">Join the server here ↗</a></p></div><form class="contact-form" id="enquiry-form"><div class="field"><label for="service">What do you need?</label><select id="service" required><option value="">Select a service</option><option>Discord bot development</option><option>Discord server setup and management</option><option>Custom Discord systems</option><option>Other enquiry</option></select></div><div class="field"><label for="project">Tell us about your project</label><textarea id="project" required maxlength="1200" placeholder="Describe your idea, requirements or questions..."></textarea></div><button class="btn primary" type="submit">Prepare Discord enquiry ↗</button><p class="form-note">This form does not send or store your details. It prepares a message for you to copy, then opens our Discord invite so you can submit it in a ticket.</p><p class="form-status" id="form-status" aria-live="polite"></p></form></div></section>
 </main>
 <footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a><span>© <span id="year"></span> Botsy Studios. Your vision. Our creation.</span><div class="footer-links"><a href="#services">Services</a><a href="dashboard.html">Client Portal</a><a href="#contact">Contact</a><a href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Discord ↗</a></div></div></footer>
-<button class="back-top" id="back-top" type="button" aria-label="Back to top">↑</button>
+<button id="back-top" type="button" aria-label="Back to top">↑</button>
 <script>
-  // Smooth ambient interactions, with reduced-motion and touch-device support.
-  const progressBar=document.getElementById('scroll-progress');
-  const ambientGlow=document.getElementById('ambient-glow');
-  const backTop=document.getElementById('back-top');
-  let scrollTick=false;
-  const updateScrollUI=()=>{
-    const maxScroll=document.documentElement.scrollHeight-window.innerHeight;
-    const progress=maxScroll>0?(window.scrollY/maxScroll)*100:0;
-    progressBar.style.width=progress+'%';
-    backTop.classList.toggle('visible',window.scrollY>520);
-    scrollTick=false;
-  };
-  window.addEventListener('scroll',()=>{if(!scrollTick){requestAnimationFrame(updateScrollUI);scrollTick=true}},{passive:true});
-  updateScrollUI();
-  backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
-  if(ambientGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    ambientGlow.style.opacity='1';
-    let pointerTick=false,lastX=0,lastY=0;
-    window.addEventListener('pointermove',event=>{
-      lastX=event.clientX;lastY=event.clientY;
-      if(!pointerTick){requestAnimationFrame(()=>{ambientGlow.style.left=lastX+'px';ambientGlow.style.top=lastY+'px';pointerTick=false});pointerTick=true}
-    },{passive:true});
-  }
-  document.querySelectorAll('.process-step').forEach((step,index)=>{step.style.transitionDelay=(index*55)+'ms'});
-  const menuButton=document.querySelector('.menu');
-  const navLinks=document.querySelector('.links');
-  menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');navLinks.classList.toggle('open',!open)});
-  navLinks.addEventListener('click',event=>{if(event.target.closest('a')){navLinks.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.setAttribute('aria-label','Open menu')}});
-  document.getElementById('year').textContent=new Date().getFullYear();
-  const revealItems=document.querySelectorAll('.section-head,.card,.project,.leader-card,.review-box,.community,.contact-form,.contact-copy');
-  revealItems.forEach(item=>item.classList.add('reveal'));
-  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
-      if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}
-    }),{threshold:.12,rootMargin:'0px 0px -35px 0px'});
-    revealItems.forEach(item=>revealObserver.observe(item));
-  }else{revealItems.forEach(item=>item.classList.add('visible'))}
-  document.getElementById('enquiry-form').addEventListener('submit',async event=>{
-    event.preventDefault();
-    const service=document.getElementById('service').value;
-    const project=document.getElementById('project').value.trim();
-    const message='Botsy Studios Project Enquiry
-Service: '+service+'
-Project details: '+project;
-    const status=document.getElementById('form-status');
-    window.open('https://discord.gg/PQXCjgDQSe','_blank','noopener,noreferrer');
-    try{await navigator.clipboard.writeText(message);status.textContent='Enquiry copied. Paste it into a ticket after joining the Discord server.'}
-    catch(error){status.textContent='Your enquiry is ready. Copy the service and project details above, then paste them into a Discord ticket.'}
-  });
+const progress=document.getElementById('scroll-progress'),backTop=document.getElementById('back-top');
+function updateScroll(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%';backTop.classList.toggle('visible',scrollY>500)}
+addEventListener('scroll',updateScroll,{passive:true});updateScroll();backTop.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+const menu=document.querySelector('.menu'),nav=document.querySelector('.links');menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));menu.setAttribute('aria-label',open?'Open menu':'Close menu');nav.classList.toggle('open',!open)});nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu')}});
+document.getElementById('year').textContent=new Date().getFullYear();
+const reveal=document.querySelectorAll('.section-head,.service-main,.service-mini,.price-card,.project-panel,.leader-card,.review-panel,.process-step,.community,.contact-form,.contact-copy');reveal.forEach(el=>el.classList.add('reveal'));
+if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});reveal.forEach(el=>observer.observe(el))}else reveal.forEach(el=>el.classList.add('visible'));
+document.getElementById('enquiry-form').addEventListener('submit',async e=>{e.preventDefault();const service=document.getElementById('service').value,project=document.getElementById('project').value.trim(),message='Botsy Studios Project Enquiry\nService: '+service+'\nProject details: '+project,status=document.getElementById('form-status');window.open('https://discord.gg/PQXCjgDQSe','_blank','noopener,noreferrer');try{await navigator.clipboard.writeText(message);status.textContent='Enquiry copied. Paste it into a ticket after joining the Discord server.'}catch(error){status.textContent='Your enquiry is ready. Copy the service and project details above, then paste them into a Discord ticket.'}});
+(function(){const loader=document.getElementById('botsy-loader');document.body.style.overflow='hidden';let done=false;const hide=()=>{if(done)return;done=true;setTimeout(()=>{loader.classList.add('is-hidden');document.body.style.overflow='';setTimeout(()=>loader.remove(),500)},250)};if(document.readyState==='complete')hide();else addEventListener('load',hide,{once:true});setTimeout(hide,7000)})();
 </script>
-<script>
-
-  (function(){
-    const loader=document.getElementById('botsy-loader');
-    if(!loader)return;
-    document.body.classList.add('botsy-loading');
-    let hiding=false;
-    const hideLoader=()=>{if(hiding)return;hiding=true;setTimeout(()=>{loader.classList.add('is-hidden');document.body.classList.remove('botsy-loading');setTimeout(()=>loader.remove(),500)},300)};
-    if(document.readyState==='complete')hideLoader();
-    else window.addEventListener('load',hideLoader,{once:true});
-    setTimeout(hideLoader,8000);
-  })();
-
-</script>
-</body>
-</html>
+</body></html>
