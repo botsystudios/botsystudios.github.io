@@ -14,6 +14,19 @@ const statusLabel = value => ({
 }[value] || String(value || "Updated").replaceAll("_"," "));
 const statusClass = value => ["completed"].includes(value)?"done":
   ["quality_check","awaiting_review","revision_requested"].includes(value)?"review":"";
+
+const portalStyle=document.createElement("style");
+portalStyle.textContent=".order{grid-template-columns:minmax(0,1fr) auto}.order-details{grid-column:1/-1;border-top:1px solid #9dbbe718;padding-top:12px}.order-details summary{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#a9cfff;font-size:.73rem;font-weight:700;cursor:pointer;list-style:none}.order-details summary::-webkit-details-marker{display:none}.order-details summary:after{content:'＋';color:#8abfff;font-size:1rem;transition:transform .2s}.order-details[open] summary:after{content:'−'}.order-expand{padding:18px 0 3px}.tracker-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:11px;color:#d9eaff;font-size:.75rem;font-weight:700}.tracker-head span:last-child{color:#8fa8c8;font-size:.68rem;font-weight:500}.tracker-bar{height:6px;overflow:hidden;border-radius:99px;background:#ffffff12}.tracker-fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#1677ff,#5bdcff);box-shadow:0 0 14px #2583ff88;transition:width .5s ease}.tracker-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}.tracker-step{color:#7185a2;font-size:.63rem;line-height:1.4}.tracker-step:before{display:block;width:7px;height:7px;margin-bottom:6px;border:1px solid #5a7190;border-radius:50%;background:#0c192d;content:''}.tracker-step.done{color:#b9d9ff}.tracker-step.done:before{border-color:#50baff;background:#50baff;box-shadow:0 0 10px #50baff88}.order-timeline{display:grid;gap:0;margin:18px 0 15px}.order-timeline .activity{padding-bottom:14px}.order-timeline .activity:last-child{padding-bottom:0}.order-support{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid #68aaff3b;border-radius:8px;background:#1677ff12;color:#a9d1ff;font-size:.69rem;font-weight:700}.order-support:hover{border-color:#68aaff88;background:#1677ff22}@media(max-width:560px){.tracker-step{font-size:.57rem}.order-details summary{font-size:.68rem}}";
+document.head.append(portalStyle);
+const stageFor=status=>({approved:0,in_progress:1,revision_requested:1,revision_in_progress:1,quality_check:2,awaiting_review:2,completed:3,cancelled:-1}[status]??0);
+const progressFor=status=>({approved:18,in_progress:48,revision_requested:48,revision_in_progress:54,quality_check:76,awaiting_review:91,completed:100,cancelled:0}[status]??18);
+const orderEventsFor=(all,id)=>all.filter(event=>event.order_id===id).slice(0,8);
+const renderOrderProgress=order=>{
+ const steps=["Approved","In progress","Quality check","Completed"],stage=stageFor(order.status),percent=progressFor(order.status),cancelled=order.status==="cancelled";
+ return '<div class="tracker-head"><span>'+(cancelled?"Order cancelled":"Project progress")+'</span><span>'+(cancelled?"Closed":percent+"%")+'</span></div>'+
+ '<div class="tracker-bar" role="progressbar" aria-label="Project progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+percent+'"><div class="tracker-fill" style="width:'+percent+'%"></div></div>'+
+ '<div class="tracker-steps">'+steps.map((label,index)=>'<div class="tracker-step '+(!cancelled&&index<=stage?"done":"")+'">'+label+'</div>').join("")+'</div>';
+};
 document.querySelector(".preview")?.remove();
 let realtimeChannel = null;
 const showMessage = (heading, body, buttonText="", onClick=null) => {
@@ -64,7 +77,14 @@ if(!configured){
     </section>
     <div class="section-grid">
       <section class="panel" id="orders"><div class="panel-head"><h2>My orders</h2><span style="color:#91c5ff;font-size:.75rem">${orders.length} total</span></div>
-       <div class="orders">${orders.length?orders.map(o=>'<article class="order"><div><div class="order-name">'+esc(o.service_name)+'</div><div class="order-id">ORDER #'+esc(o.external_order_id)+'</div><div class="order-meta"><span>Placed '+esc(date(o.created_at))+'</span><span>·</span><span>'+(o.claimed_by_name?'Assigned to '+esc(o.claimed_by_name):'Awaiting staff assignment')+'</span></div></div><span class="status '+statusClass(o.status)+'">'+esc(statusLabel(o.status))+'</span></article>').join(""):'<div class="empty-note">No approved orders are linked to this Discord account yet. Once management approves your order in Discord, it will appear here.</div>'}</div>
+       <div class="orders">\${orders.length?orders.map(o=>{
+        const orderEvents=orderEventsFor(events,o.id);
+        return '<article class="order"><div><div class="order-name">'+esc(o.service_name)+'</div><div class="order-id">ORDER #'+esc(o.external_order_id)+'</div><div class="order-meta"><span>Placed '+esc(date(o.created_at))+'</span><span>·</span><span>'+(o.claimed_by_name?'Assigned to '+esc(o.claimed_by_name):'Awaiting staff assignment')+'</span></div></div><span class="status '+statusClass(o.status)+'">'+esc(statusLabel(o.status))+'</span>'+
+          '<details class="order-details"><summary>View project progress and updates</summary><div class="order-expand">'+renderOrderProgress(o)+
+          '<div class="tracker-head" style="margin-top:20px"><span>Project timeline</span><span>'+orderEvents.length+' update'+(orderEvents.length===1?"":"s")+'</span></div>'+
+          (orderEvents.length?'<div class="order-timeline">'+orderEvents.map(event=>'<div class="activity"><span class="activity-dot">✓</span><div><strong>'+esc(event.title)+'</strong><p>'+esc(event.description || (event.actor_name?'Updated by '+event.actor_name:'Order progress updated'))+'</p><time>'+esc(date(event.created_at))+'</time></div></div>').join("")+'</div>':'<p class="empty-note" style="padding:7px 0 14px">Updates will appear here as the team progresses through your project.</p>')+
+          '<a class="order-support" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Ask about this order · #'+esc(o.external_order_id)+' ↗</a></div></details></article>';
+      }).join(""):'<div class="empty-note">No approved orders are linked to this Discord account yet. Once management approves your order in Discord, it will appear here.</div>'}</div></div>
       </section>
       <section class="panel" id="activity"><div class="panel-head"><h2>Latest activity</h2><span style="color:#91c5ff;font-size:.75rem">Live feed</span></div>
        <div class="activity-list">${events.length?events.map(e=>'<div class="activity"><span class="activity-dot">✓</span><div><strong>'+esc(e.title)+'</strong><p>'+esc(e.description || (e.actor_name?'Updated by '+e.actor_name:'Order progress updated'))+'</p><time>'+esc(date(e.created_at))+'</time></div></div>').join(""):'<div class="empty-note">Order updates will appear here as the Botsy team progresses through your project.</div>'}</div>
