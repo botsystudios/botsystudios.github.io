@@ -50,6 +50,34 @@ body{background:radial-gradient(ellipse at 72% 6%,#1459a638,transparent 35%),rad
 @media(max-width:760px){.hero{padding:68px 0 48px}.hero-grid{grid-template-columns:1fr;gap:0}.hero h1{font-size:clamp(3.7rem,16vw,5.6rem)}.hero-art{min-height:410px;margin-top:18px}.art-ring{width:310px}.art-core{width:min(100%,340px);transform:none}.cinema-particles{opacity:.55}}
 @media(max-width:420px){.hero-art{min-height:350px}.art-ring{width:275px}}
 @media(prefers-reduced-motion:reduce){.cinema-particles{display:none}.brand-mark:after,.loader-core,.core-symbol:after,.tag-one,.tag-two{animation:none!important}}
+
+/* CINEMATIC MOTION PASS — layered over the restored homepage layout */
+.hero{overflow:hidden;isolation:isolate}
+.hero-grid{position:relative;z-index:1}
+.cinema-particles{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.7}
+.hero:before{animation:ambientDrift 18s ease-in-out infinite alternate}
+.hero .eyebrow{animation:heroRise .85s .08s both cubic-bezier(.2,.75,.2,1)}
+.hero h1{animation:heroRise 1.05s .18s both cubic-bezier(.2,.75,.2,1)}
+.hero-copy{animation:heroRise .9s .34s both cubic-bezier(.2,.75,.2,1)}
+.hero .actions{animation:heroRise .9s .48s both cubic-bezier(.2,.75,.2,1)}
+.hero .micro{animation:heroRise .9s .62s both cubic-bezier(.2,.75,.2,1)}
+.hero-art{animation:heroArtArrive 1.35s .18s both cubic-bezier(.16,.8,.2,1)}
+.art-grid{animation:gridBreath 12s ease-in-out infinite alternate}
+.art-ring{filter:drop-shadow(0 0 16px #258dff35)}
+.art-core{transform-style:preserve-3d;will-change:transform;animation:float 7s ease-in-out infinite,coreGlow 8s ease-in-out infinite}
+.core-symbol{position:relative;overflow:hidden}
+.core-symbol:after{position:absolute;content:"";inset:-45% -70%;background:linear-gradient(110deg,transparent 38%,#c8f0ff70 50%,transparent 62%);transform:translateX(-90%) rotate(12deg);animation:coreSheen 5.5s ease-in-out infinite}
+.float-tag{will-change:transform}
+.hero .eyebrow:before{animation:eyebrowGlow 3s ease-in-out infinite}
+@keyframes heroRise{from{opacity:0;transform:translate3d(0,30px,0);filter:blur(7px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes heroArtArrive{from{opacity:0;transform:translate3d(36px,18px,0) scale(.94);filter:blur(12px)}to{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+@keyframes ambientDrift{from{transform:translate3d(-2%,1%,0) scale(.96);opacity:.65}to{transform:translate3d(2%,-2%,0) scale(1.08);opacity:1}}
+@keyframes gridBreath{from{opacity:.35;transform:scale(.98)}to{opacity:.8;transform:scale(1.04)}}
+@keyframes coreGlow{0%,100%{box-shadow:0 30px 90px #0009,0 0 55px #1677ff22,inset 0 1px #ffffff20}50%{box-shadow:0 40px 110px #000b,0 0 90px #1677ff45,inset 0 1px #ffffff35}}
+@keyframes coreSheen{0%,58%,100%{transform:translateX(-90%) rotate(12deg)}78%{transform:translateX(90%) rotate(12deg)}}
+@keyframes eyebrowGlow{0%,100%{box-shadow:0 0 0 #4aaaff00}50%{box-shadow:0 0 24px #4aaaff22}}
+@media(max-width:760px){.hero .actions{animation-delay:.4s}.hero-art{animation-delay:.25s}.cinema-particles{opacity:.48}}
+@media(prefers-reduced-motion:reduce){.hero .eyebrow,.hero h1,.hero-copy,.hero .actions,.hero .micro,.hero-art{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}.hero:before,.art-grid,.art-core,.core-symbol:after,.hero .eyebrow:before{animation:none!important}.cinema-particles{opacity:.2}}
 </style>
 </head>
 <body>
@@ -62,7 +90,7 @@ body{background:radial-gradient(ellipse at 72% 6%,#1459a638,transparent 35%),rad
 <a class="btn primary nav-cta" href="dashboard.html">Client Portal ↗</a>
 </div></header>
 <main>
-<section class="hero" id="home"><div class="wrap hero-grid">
+<section class="hero" id="home"><canvas class="cinema-particles" id="cinema-particles" aria-hidden="true"></canvas><div class="wrap hero-grid">
 <div><div class="eyebrow">Independent digital development studio</div><h1><span class="gradient">Your vision.<br>Our creation.</span></h1><p class="hero-copy">We turn ideas into polished digital experiences. From custom Discord bots to complete server systems, Botsy Studios builds solutions designed around your community.</p><div class="actions"><a class="btn primary" href="#contact">Start a project ↗</a><a class="btn secondary" href="dashboard.html">Client Portal ↗</a><a class="btn secondary" href="#services">Explore what we do ↓</a></div><div class="micro"><span>CREATIVE THINKING</span><span>CUSTOM BUILDS</span><span>COMMUNITY FIRST</span></div></div>
 <div class="hero-art" role="img" aria-label="Botsy Studios digital systems artwork"><div class="art-grid"></div><div class="art-ring"></div><div class="float-tag tag-one">✦ BUILT TO FIT</div><div class="float-tag tag-two">⌘ CUSTOM SYSTEMS</div><div class="art-core"><div class="core-head"><span>BOTSY / STUDIO</span><span class="live">CREATING</span></div><div class="core-symbol">B.</div><h3>Built around your vision.</h3><p>Thoughtful design. Custom technology. Systems that work for your community.</p><div class="core-bars"><i></i><i></i><i></i></div></div></div>
 </div></section>
@@ -98,5 +126,50 @@ document.getElementById('enquiry-form').addEventListener('submit',async e=>{e.pr
 
 // Lightweight cinematic particle field, with a static fallback for reduced motion.
 (()=>{const hero=document.querySelector('.hero');if(!hero||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const canvas=document.createElement('canvas');canvas.className='cinema-particles';canvas.setAttribute('aria-hidden','true');hero.prepend(canvas);const ctx=canvas.getContext('2d');if(!ctx)return;let w=0,h=0,dpr=1,points=[],raf=0;const resize=()=>{const r=hero.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,1.5);w=r.width;h=r.height;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);points=Array.from({length:Math.min(85,Math.floor(w*h/10500))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.35,a:Math.random()*.55+.12,s:Math.random()*.22+.06,p:Math.random()*6.28}))};const draw=()=>{ctx.clearRect(0,0,w,h);for(const q of points){q.p+=.012;q.y-=q.s;if(q.y<0)q.y=h;const glow=q.a*(.72+.28*Math.sin(q.p));ctx.beginPath();ctx.arc(q.x,q.y,q.r,0,Math.PI*2);ctx.fillStyle='rgba(104,190,255,'+glow+')';ctx.shadowColor='#55baff';ctx.shadowBlur=8;ctx.fill()}ctx.shadowBlur=0;raf=requestAnimationFrame(draw)};resize();draw();addEventListener('resize',resize,{passive:true});addEventListener('pagehide',()=>cancelAnimationFrame(raf),{once:true})})();
+
+/* Lightweight cinematic particle field; respects reduced-motion and mobile devices. */
+(()=>{
+ const canvas=document.getElementById('cinema-particles');
+ if(!canvas)return;
+ const ctx=canvas.getContext('2d');
+ if(!ctx)return;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ let width=0,height=0,particles=[],raf=0,last=0;
+ const makeParticles=()=>{
+   const count=Math.min(54,Math.max(18,Math.round(width/25)));
+   particles=Array.from({length:count},()=>({
+     x:Math.random()*width,y:Math.random()*height,
+     vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,
+     r:Math.random()*1.5+.45,a:Math.random()*.45+.18,
+     phase:Math.random()*Math.PI*2
+   }));
+ };
+ const resize=()=>{
+   const rect=canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,1.6);
+   width=Math.max(1,rect.width);height=Math.max(1,rect.height);
+   canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+   ctx.setTransform(dpr,0,0,dpr,0,0);makeParticles();draw(0);
+ };
+ const draw=(time)=>{
+   ctx.clearRect(0,0,width,height);
+   for(let i=0;i<particles.length;i++){
+     const p=particles[i];
+     if(!reduced){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=width;if(p.x>width)p.x=0;if(p.y<0)p.y=height;if(p.y>height)p.y=0;}
+     const pulse=reduced?1:(.72+.28*Math.sin(time*.0007+p.phase));
+     ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+     ctx.fillStyle='rgba(132,195,255,'+(p.a*pulse)+')';ctx.fill();
+     for(let j=i+1;j<particles.length;j++){
+       const q=particles[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);
+       if(d<118){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(65,143,230,'+((1-d/118)*.11)+')';ctx.lineWidth=.7;ctx.stroke();}
+     }
+   }
+ };
+ const animate=time=>{if(time-last>32){draw(time);last=time;}raf=requestAnimationFrame(animate);};
+ resize();
+ if(!reduced)raf=requestAnimationFrame(animate);
+ window.addEventListener('resize',resize,{passive:true});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);}else if(!reduced){last=0;raf=requestAnimationFrame(animate);}});
+})();
+
 </script>
 </body></html>
