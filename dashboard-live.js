@@ -77,14 +77,14 @@ if(!configured){
     </section>
     <div class="section-grid">
       <section class="panel" id="orders"><div class="panel-head"><h2>My orders</h2><span style="color:#91c5ff;font-size:.75rem">${orders.length} total</span></div>
-       <div class="orders">\${orders.length?orders.map(o=>{
+       <div class="orders">${orders.length?orders.map(o=>{
         const orderEvents=orderEventsFor(events,o.id);
         return '<article class="order"><div><div class="order-name">'+esc(o.service_name)+'</div><div class="order-id">ORDER #'+esc(o.external_order_id)+'</div><div class="order-meta"><span>Placed '+esc(date(o.created_at))+'</span><span>·</span><span>'+(o.claimed_by_name?'Assigned to '+esc(o.claimed_by_name):'Awaiting staff assignment')+'</span></div></div><span class="status '+statusClass(o.status)+'">'+esc(statusLabel(o.status))+'</span>'+
           '<details class="order-details"><summary>View project progress and updates</summary><div class="order-expand">'+renderOrderProgress(o)+
           '<div class="tracker-head" style="margin-top:20px"><span>Project timeline</span><span>'+orderEvents.length+' update'+(orderEvents.length===1?"":"s")+'</span></div>'+
           (orderEvents.length?'<div class="order-timeline">'+orderEvents.map(event=>'<div class="activity"><span class="activity-dot">✓</span><div><strong>'+esc(event.title)+'</strong><p>'+esc(event.description || (event.actor_name?'Updated by '+event.actor_name:'Order progress updated'))+'</p><time>'+esc(date(event.created_at))+'</time></div></div>').join("")+'</div>':'<p class="empty-note" style="padding:7px 0 14px">Updates will appear here as the team progresses through your project.</p>')+
           '<a class="order-support" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Ask about this order · #'+esc(o.external_order_id)+' ↗</a></div></details></article>';
-      }).join(""):'<div class="empty-note">No approved orders are linked to this Discord account yet. Once management approves your order in Discord, it will appear here.</div>'}</div></div>
+      }).join(""):'<div class="empty-note">No approved orders are linked to this Discord account yet. Once management approves your order in Discord, it will appear here.</div>'}</div>
       </section>
       <section class="panel" id="activity"><div class="panel-head"><h2>Latest activity</h2><span style="color:#91c5ff;font-size:.75rem">Live feed</span></div>
        <div class="activity-list">${events.length?events.map(e=>'<div class="activity"><span class="activity-dot">✓</span><div><strong>'+esc(e.title)+'</strong><p>'+esc(e.description || (e.actor_name?'Updated by '+e.actor_name:'Order progress updated'))+'</p><time>'+esc(date(e.created_at))+'</time></div></div>').join(""):'<div class="empty-note">Order updates will appear here as the Botsy team progresses through your project.</div>'}</div>
