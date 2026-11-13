@@ -97,9 +97,30 @@ body{background:radial-gradient(ellipse at 72% 6%,#1459a638,transparent 35%),rad
 @media(max-width:760px){.art-ring{animation-duration:22s}.art-core{animation:cardFloatMobile 4.8s ease-in-out infinite,coreGlow 3.8s ease-in-out infinite}.cinema-particles{opacity:.9}}
 @keyframes cardFloatMobile{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-13px) rotate(.8deg)}}
 
+
+/* PHASE 2 — motion across the full homepage */
+.ambient-motion{position:fixed;inset:-28%;z-index:0;pointer-events:none;opacity:.34;overflow:hidden;background:radial-gradient(ellipse at 22% 30%,#126bff35,transparent 28%),radial-gradient(ellipse at 78% 65%,#12c8ff20,transparent 26%);filter:blur(18px);animation:ambientPan 24s ease-in-out infinite alternate}
+.ambient-motion:after{position:absolute;inset:0;content:"";background:repeating-linear-gradient(112deg,transparent 0 145px,#64c7ff0a 146px,#64c7ff0a 148px,transparent 149px 290px);mask-image:radial-gradient(ellipse at center,#000 8%,transparent 72%);animation:streakDrift 18s linear infinite}
+.header,main,footer{position:relative;z-index:1}
+.reveal{transition-delay:var(--reveal-delay,0ms)}
+.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step{transform-style:preserve-3d;will-change:transform;transition:transform .32s cubic-bezier(.2,.75,.2,1),border-color .32s,box-shadow .32s}
+.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{transform:translate3d(0,-7px,0) perspective(850px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg));border-color:#75c6ffb0;box-shadow:0 24px 65px #0007,0 0 34px #1688ff30}
+.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step{position:relative}
+.service-main:focus-within,.service-mini:focus-within,.price-card:focus-within,.project-panel:focus-within,.leader-card:focus-within,.process-step:focus-within{border-color:#75c6ffb0;box-shadow:0 0 0 3px #2583ff22}
+.trust-item,.value,.faq-list details{transition:background .3s,border-color .3s,transform .3s}
+.trust-item:hover,.value:hover,.faq-list details[open]{background-color:#1677ff0c}
+.community:after{position:absolute;top:-80%;left:-35%;width:35%;height:260%;content:"";pointer-events:none;background:linear-gradient(90deg,transparent,#a9dcff18,transparent);transform:rotate(22deg);animation:communitySweep 8s ease-in-out infinite}
+@keyframes ambientPan{0%{transform:translate3d(-3%,1%,0) scale(.94)}100%{transform:translate3d(3%,-2%,0) scale(1.08)}}
+@keyframes streakDrift{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
+@keyframes communitySweep{0%,45%{left:-45%;opacity:0}60%{opacity:1}100%{left:125%;opacity:0}}
+@media(hover:hover) and (pointer:fine){.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{--tilt-x:var(--pointer-x,0deg);--tilt-y:var(--pointer-y,0deg)}}
+@media(max-width:760px){.ambient-motion{opacity:.23}.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{transform:translateY(-3px)}}
+@media(prefers-reduced-motion:reduce){.ambient-motion,.ambient-motion:after,.community:after{animation:none!important}.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step{will-change:auto;transition:none}.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{transform:none}}
+
 </style>
 </head>
 <body>
+<div class="ambient-motion" aria-hidden="true"></div>
 <div id="scroll-progress" aria-hidden="true"></div>
 <div id="botsy-loader" role="status" aria-label="Loading Botsy Studios"><div class="loader-inner"><div class="loader-emblem"><div class="loader-core">BS</div></div><div class="loader-name">BOTSY <span>STUDIOS</span></div><div class="loader-caption">Preparing your experience</div></div></div>
 <header class="header"><div class="wrap nav">
@@ -138,7 +159,16 @@ function updateScroll(){const max=document.documentElement.scrollHeight-innerHei
 addEventListener('scroll',updateScroll,{passive:true});updateScroll();backTop.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
 const menu=document.querySelector('.menu'),nav=document.querySelector('.links');menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!open));menu.setAttribute('aria-label',open?'Open menu':'Close menu');nav.classList.toggle('open',!open)});nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open menu')}});
 document.getElementById('year').textContent=new Date().getFullYear();
-const reveal=document.querySelectorAll('.section-head,.service-main,.service-mini,.price-card,.project-panel,.leader-card,.review-panel,.process-step,.community,.contact-form,.contact-copy');reveal.forEach(el=>el.classList.add('reveal'));
+const reveal=document.querySelectorAll('.section-head,.trust-item,.service-main,.service-mini,.price-card,.project-panel,.leader-card,.value,.review-panel,.process-step,.faq-list details,.community,.contact-form,.contact-copy');reveal.forEach(el=>el.classList.add('reveal'));
+const staggerGroups=document.querySelectorAll('.trust-row,.service-layout,.service-side,.price-grid,.project-stack,.team-grid,.values,.process-grid,.faq-list');
+staggerGroups.forEach(group=>Array.from(group.children).forEach((el,i)=>el.style.setProperty('--reveal-delay',(i%4)*95+'ms')));
+if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+ document.querySelectorAll('.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step').forEach(card=>{
+  card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.setProperty('--pointer-x',((x-.5)*7).toFixed(2)+'deg');card.style.setProperty('--pointer-y',((.5-y)*7).toFixed(2)+'deg')},{passive:true});
+  card.addEventListener('pointerleave',()=>{card.style.removeProperty('--pointer-x');card.style.removeProperty('--pointer-y')});
+ });
+}
+
 if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});reveal.forEach(el=>observer.observe(el))}else reveal.forEach(el=>el.classList.add('visible'));
 document.getElementById('enquiry-form').addEventListener('submit',async e=>{e.preventDefault();const service=document.getElementById('service').value,project=document.getElementById('project').value.trim(),message='Botsy Studios Project Enquiry\nService: '+service+'\nProject details: '+project,status=document.getElementById('form-status');window.open('https://discord.gg/PQXCjgDQSe','_blank','noopener,noreferrer');try{await navigator.clipboard.writeText(message);status.textContent='Enquiry copied. Paste it into a ticket after joining the Discord server.'}catch(error){status.textContent='Your enquiry is ready. Copy the service and project details above, then paste them into a Discord ticket.'}});
 (function(){const loader=document.getElementById('botsy-loader');document.body.style.overflow='hidden';let done=false;const hide=()=>{if(done)return;done=true;setTimeout(()=>{loader.classList.add('is-hidden');document.body.style.overflow='';setTimeout(()=>loader.remove(),500)},250)};if(document.readyState==='complete')hide();else addEventListener('load',hide,{once:true});setTimeout(hide,7000)})();
