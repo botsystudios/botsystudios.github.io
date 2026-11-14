@@ -150,7 +150,19 @@
   sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
 </script>
   <script src="supabase-config.js"></script>
-  <script type="module" src="dashboard-live.js"></script>
+  <script>
+  (function(){
+    const root=document.querySelector(".content");
+    if(root) root.innerHTML='<section class="panel" style="max-width:680px;margin:55px auto;padding:28px"><div class="eyebrow">Botsy Studios · Client Portal</div><h1 style="font:700 1.8rem \'Space Grotesk\';margin:13px 0">Connecting your workspace…</h1><p style="color:#9aacc6;line-height:1.8">Loading your secure client portal. Your order information will appear after Discord sign-in.</p></section>';
+    const live=document.createElement("script");
+    live.type="module";
+    live.src="dashboard-live.js?v=20261114-1";
+    live.onerror=function(){
+      if(root) root.innerHTML='<section class="panel" style="max-width:680px;margin:55px auto;padding:28px"><div class="eyebrow">Botsy Studios · Client Portal</div><h1 style="font:700 1.8rem \'Space Grotesk\';margin:13px 0">Portal could not load</h1><p style="color:#9aacc6;line-height:1.8">The live portal script could not be loaded. Please refresh the page or try again later.</p></section>';
+    };
+    document.body.appendChild(live);
+  })();
+</script>
 <script>
 
   (function(){
