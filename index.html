@@ -117,6 +117,41 @@ body{background:radial-gradient(ellipse at 72% 6%,#1459a638,transparent 35%),rad
 @media(max-width:760px){.ambient-motion{opacity:.23}.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{transform:translateY(-3px)}}
 @media(prefers-reduced-motion:reduce){.ambient-motion,.ambient-motion:after,.community:after{animation:none!important}.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step{will-change:auto;transition:none}.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{transform:none}}
 
+
+/* PHASE 3 — unmistakable cinematic layer */
+.cinematic-scanlines{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.12;background:repeating-linear-gradient(180deg,transparent 0 3px,#9bd8ff0b 4px,transparent 5px 8px);mix-blend-mode:screen}
+body:before{position:fixed;inset:0;z-index:0;pointer-events:none;content:"";opacity:.34;background:radial-gradient(520px circle at var(--pointer-x,50%) var(--pointer-y,30%),#168bff20,transparent 70%);transition:opacity .35s}
+.hero{overflow:hidden}
+.hero:after{height:2px;background:linear-gradient(90deg,transparent,#4cbcff,#b4ecff,#2583ff,transparent);background-size:220% 100%;animation:heroEdgeFlow 5s linear infinite;box-shadow:0 0 28px #2583ff99}
+.hero .eyebrow,.hero h1,.hero-copy,.hero .actions,.hero .micro{animation:heroEntrance .9s cubic-bezier(.16,1,.3,1) both}
+.hero .eyebrow{animation-delay:.12s}.hero h1{animation-delay:.24s}.hero-copy{animation-delay:.38s}.hero .actions{animation-delay:.52s}.hero .micro{animation-delay:.66s}
+.hero h1 .gradient{background-size:220% auto;animation:headlineGlow 7s ease-in-out infinite}
+.hero .btn.primary{position:relative;overflow:hidden}
+.hero .btn.primary:after{position:absolute;inset:-80% auto -80% -55%;width:38%;content:"";pointer-events:none;background:linear-gradient(90deg,transparent,#ffffff55,transparent);transform:rotate(22deg);animation:buttonSweep 4.8s ease-in-out infinite}
+.links a{position:relative}
+.links a:after{position:absolute;right:100%;bottom:-7px;left:0;height:1px;content:"";background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 10px #55cfff;transition:right .28s}
+.links a:hover:after,.links a:focus-visible:after{right:0}
+.section:not(.hero){isolation:isolate}
+.section:not(.hero):before{position:absolute;top:0;left:50%;width:min(78%,900px);height:1px;content:"";background:linear-gradient(90deg,transparent,#54baff55,transparent);transform:translateX(-50%);opacity:.7}
+.section-head.reveal,.contact-copy.reveal{filter:blur(7px)}
+.section-head.reveal.visible,.contact-copy.reveal.visible{filter:blur(0)}
+.reveal{transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1),filter .95s ease;transition-delay:var(--reveal-delay,0ms)}
+.reveal:not(.visible){transform:translate3d(0,38px,0) scale(.985)}
+.service-main:before,.service-mini:before,.price-card:after,.project-panel:before,.leader-card:after{position:absolute;inset:0;z-index:0;content:"";pointer-events:none;opacity:0;background:linear-gradient(115deg,transparent 18%,#8bdcff16 46%,transparent 72%);background-size:230% 100%;transition:opacity .3s}
+.service-main:hover:before,.service-mini:hover:before,.price-card:hover:after,.project-panel:hover:before,.leader-card:hover:after{opacity:1;animation:surfaceSweep 1.35s ease}
+.service-main>*,.service-mini>*,.price-card>*,.project-panel>*,.leader-card>*{position:relative;z-index:1}
+.art-ring{filter:drop-shadow(0 0 26px #258dff99)}
+.float-tag{animation-duration:3.2s}
+.tag-two{animation-duration:4.2s}
+#back-top{box-shadow:0 0 24px #1677ff35}
+@keyframes heroEntrance{from{opacity:0;transform:translateY(28px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes headlineGlow{0%,100%{background-position:0% 50%;filter:drop-shadow(0 0 0 #5ccfff00)}50%{background-position:100% 50%;filter:drop-shadow(0 0 20px #3e9dff55)}}
+@keyframes buttonSweep{0%,58%{left:-60%;opacity:0}68%{opacity:1}100%{left:130%;opacity:0}}
+@keyframes heroEdgeFlow{to{background-position:220% 0}}
+@keyframes surfaceSweep{0%{background-position:130% 0}100%{background-position:-130% 0}}
+@media(max-width:760px){.cinematic-scanlines{opacity:.07}.hero .eyebrow,.hero h1,.hero-copy,.hero .actions,.hero .micro{animation-duration:.7s}.section-head.reveal,.contact-copy.reveal{filter:none}.reveal:not(.visible){transform:translate3d(0,24px,0) scale(.99)}}
+@media(prefers-reduced-motion:reduce){.cinematic-scanlines{display:none}.hero:after,.hero .eyebrow,.hero h1,.hero-copy,.hero .actions,.hero .micro,.hero h1 .gradient,.hero .btn.primary:after,.service-main:hover:before,.service-mini:hover:before,.price-card:hover:after,.project-panel:hover:before,.leader-card:hover:after{animation:none!important}.reveal,.section-head.reveal,.contact-copy.reveal{filter:none!important;transition:none!important}.reveal:not(.visible){transform:none}}
+
 </style>
 </head>
 <body>
@@ -218,6 +253,10 @@ document.getElementById('enquiry-form').addEventListener('submit',async e=>{e.pr
  window.addEventListener('resize',resize,{passive:true});
  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);}else if(!reduced){last=0;raf=requestAnimationFrame(animate);}});
 })();
+
+
+/* Phase 3 pointer illumination: subtle and disabled for touch/reduced-motion. */
+(()=>{const root=document.documentElement;if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches){let queued=false,lastX=innerWidth*.5,lastY=innerHeight*.3;addEventListener('pointermove',e=>{lastX=e.clientX;lastY=e.clientY;if(!queued){queued=true;requestAnimationFrame(()=>{root.style.setProperty('--pointer-x',lastX+'px');root.style.setProperty('--pointer-y',lastY+'px');queued=false})}},{passive:true})}})();
 
 </script>
 </body></html>
