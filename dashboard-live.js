@@ -1,5 +1,3 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
 const root = document.querySelector(".content");
 const config = window.BOTSY_SUPABASE_CONFIG || {};
 const configured = config.url && !config.url.includes("YOUR_PROJECT_REF") &&
@@ -41,7 +39,9 @@ const showMessage = (heading, body, buttonText="", onClick=null) => {
 if(!configured){
  showMessage("Portal setup required","The live client portal is prepared, but it is not connected to a Supabase project yet. Follow supabase/README.md, then add your public project URL and anon key to supabase-config.js. Demo orders are intentionally hidden.");
 } else {
- const supabase=createClient(config.url,config.anonKey);
+ try {
+   const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2");
+   const supabase=createClient(config.url,config.anonKey);
  const renderLogin=()=>showMessage("Your projects, all in one place","Sign in securely with the Discord account you used when placing your Botsy Studios order.","Continue with Discord",async()=>{
    const {error}=await supabase.auth.signInWithOAuth({provider:"discord",options:{scopes:"identify",redirectTo:window.location.origin+window.location.pathname}});
    if(error) showMessage("Sign-in could not start",error.message);
@@ -107,4 +107,7 @@ if(!configured){
  else if(session?.user) await renderDashboard(session.user);
  else renderLogin();
  supabase.auth.onAuthStateChange(async(event,session)=>{if(event==="SIGNED_IN" && session?.user) await renderDashboard(session.user);});
+  } catch(error) {
+   showMessage("Portal connection failed","The live client portal could not load its secure connection. Please reload this page. If the problem continues, contact Botsy support.");
+  }
 }
