@@ -60,11 +60,11 @@
     .loader-emblem{position:relative;width:104px;height:104px;display:grid;place-items:center}
     .loader-emblem:before,.loader-emblem:after{position:absolute;inset:2px;border:2px solid transparent;border-top-color:#65c8ff;border-right-color:#2583ff;border-radius:50%;content:"";animation:botsy-ring-spin 1.35s linear infinite;filter:drop-shadow(0 0 8px #2583ff99)}
     .loader-emblem:after{inset:11px;border-width:1px;border-top-color:#ffffffd9;border-left-color:#55d5ff;border-right-color:transparent;animation-duration:2.1s;animation-direction:reverse;opacity:.8}
-    .loader-core{width:65px;height:65px;display:grid;place-items:center;border:1px solid #8ccaff88;border-radius:19px;background:linear-gradient(145deg,#248fff,#123c9c);box-shadow:0 0 0 5px #2583ff17,0 0 38px #1677ff77,inset 0 1px #ffffff70;color:white;font:700 1.25rem "Space Grotesk",sans-serif;letter-spacing:-.09em;text-shadow:0 2px 12px #001b4c}
+    .loader-core{width:65px;height:65px;display:grid;place-items:center;border:1px solid #8ccaff88;border-radius:19px;background:linear-gradient(145deg,#248fff,#123c9c);box-shadow:0 0 0 5px #2583ff17,0 0 38px #1677ff77,inset 0 1px #ffffff70;color:white;font:700 1.25rem "Space Grotesk",sans-serif;letter-spacing:-.09em;text-shadow:0 2px 12px #001b4c;animation:loaderCore 2.1s ease-in-out infinite}
     .loader-name{color:#f3f8ff;font:700 .82rem "Space Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase}
     .loader-name span{color:#75baff}
     .loader-caption{margin-top:-11px;color:#829cbd;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase}
-    @keyframes botsy-ring-spin{to{transform:rotate(360deg)}}
+    @keyframes botsy-ring-spin{to{transform:rotate(360deg)}}@keyframes loaderCore{50%{transform:scale(1.1);text-shadow:0 0 22px #8cceff}}
     body.botsy-loading{overflow:hidden}
     @media(prefers-reduced-motion:reduce){#botsy-loader{transition:none}.loader-emblem:before,.loader-emblem:after{animation:none}}
 
