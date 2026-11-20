@@ -152,6 +152,78 @@ body:before{position:fixed;inset:0;z-index:0;pointer-events:none;content:"";opac
 @media(max-width:760px){.cinematic-scanlines{opacity:.07}.hero .eyebrow,.hero h1,.hero-copy,.hero .actions,.hero .micro{animation-duration:.7s}.section-head.reveal,.contact-copy.reveal{filter:none}.reveal:not(.visible){transform:translate3d(0,24px,0) scale(.99)}}
 @media(prefers-reduced-motion:reduce){.cinematic-scanlines{display:none}.hero:after,.hero .eyebrow,.hero h1,.hero-copy,.hero .actions,.hero .micro,.hero h1 .gradient,.hero .btn.primary:after,.service-main:hover:before,.service-mini:hover:before,.price-card:hover:after,.project-panel:hover:before,.leader-card:hover:after{animation:none!important}.reveal,.section-head.reveal,.contact-copy.reveal{filter:none!important;transition:none!important}.reveal:not(.visible){transform:none}}
 
+
+/* 2026 studio refresh — Saphix-inspired information architecture, original Botsy identity */
+:root{--max:1240px;--line:#8dbbff24}
+body{background-color:#050a16;background-image:radial-gradient(ellipse at 72% -5%,#1556a82c,transparent 38%),radial-gradient(ellipse at 8% 48%,#087bff10,transparent 30%),linear-gradient(#70aaff07 1px,transparent 1px),linear-gradient(90deg,#70aaff07 1px,transparent 1px);background-size:auto,auto,46px 46px,46px 46px;background-attachment:fixed}
+.header{background:#050b18d9;border-bottom-color:#80baff25;box-shadow:0 10px 35px #0002}
+.nav{height:82px;gap:22px}
+.brand{font-size:1.08rem;flex-shrink:0}
+.brand-mark{width:42px;height:42px;border:1px solid #a6d8ff80;border-radius:13px;box-shadow:0 0 0 4px #2583ff12,0 0 32px #2583ff48,inset 0 1px #ffffff70}
+.links{gap:clamp(12px,1.55vw,23px);font-size:.8rem;color:#bdcce2}
+.links>a,.nav-more>summary{transition:color .2s}
+.links>a:hover,.nav-more>summary:hover{color:#78d8ff}
+.nav-more{position:relative}
+.nav-more>summary{list-style:none;cursor:pointer;white-space:nowrap}
+.nav-more>summary::-webkit-details-marker{display:none}
+.nav-more>summary span{color:#7ebeff;margin-left:3px}
+.more-menu{position:absolute;top:calc(100% + 19px);right:-12px;z-index:120;display:grid;min-width:190px;padding:8px;border:1px solid #77b4f33b;border-radius:13px;background:#09172bf5;box-shadow:0 20px 55px #0009;backdrop-filter:blur(18px)}
+.more-menu a{padding:10px 11px;border-radius:8px;color:#b7c9e1;font-size:.78rem}
+.more-menu a:hover{background:#1677ff1b;color:#fff}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-actions .btn{min-height:41px;padding:0 13px;font-size:.76rem;white-space:nowrap}
+.nav-portal{border-color:#83baff38;background:#ffffff06}
+.nav-cta{box-shadow:0 8px 26px #1677ff3b}
+.hero{min-height:690px;padding:92px 0 86px}
+.hero:before{width:780px;height:780px;right:-250px;top:-240px;background:radial-gradient(circle,#1677ff30,transparent 67%)}
+.hero-grid{grid-template-columns:1.08fr .92fr;gap:54px}
+.hero h1{font-size:clamp(3.7rem,7.7vw,7rem);max-width:760px}
+.hero-copy{max-width:570px;font-size:1.04rem}
+.hero .eyebrow{padding:9px 13px;border:1px solid #66b6ff38;border-radius:999px;background:#0b2340a8;letter-spacing:.13em}
+.hero .eyebrow:before{width:7px;height:7px;border-radius:50%;background:#55d5ff;box-shadow:0 0 13px #55d5ff}
+.actions .btn{min-height:49px;padding-inline:21px}
+.primary{background:linear-gradient(110deg,#167cff,#365be8 60%,#167cff);background-size:180% 100%;transition:background-position .35s,transform .2s,box-shadow .2s}
+.primary:hover{background-position:100% 0}
+.micro span{border-radius:999px;background:#0b1a30a8;border-color:#83baff20}
+.hero-art{min-height:510px}
+.art-ring{width:430px;border-color:#6bb7ff45;box-shadow:0 0 75px #1677ff1c,inset 0 0 65px #1677ff10}
+.art-core{width:min(100%,385px);padding:29px;border-radius:22px;background:linear-gradient(145deg,#122b4cf5,#071326f7);border-color:#82c5ff66;box-shadow:0 35px 110px #000a,0 0 65px #1677ff20,inset 0 1px #ffffff24}
+.core-symbol{width:76px;height:76px;border-radius:20px;font-size:2rem}
+.float-tag{border-radius:999px;background:#0a1b32ed;border-color:#7dbbff55;letter-spacing:.04em}
+.trust-strip{background:#081426bd;border-bottom-color:#85baff25;border-top:1px solid #85baff18;backdrop-filter:blur(12px)}
+.trust-row{grid-template-columns:repeat(3,1fr);padding:26px 0}
+.trust-item{padding:5px 30px}
+.trust-item strong{font-size:1.02rem}
+.trust-item span{font-size:.75rem}
+.section{padding:112px 0}
+.section.alt{background:linear-gradient(180deg,#0a1629b8,#07101e8c);border-color:#8bbcff18}
+.section-head h2{font-size:clamp(2.55rem,4.9vw,4.25rem)}
+.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step,.contact-form{border-color:#8dbbff2a;background:linear-gradient(145deg,#10213ddd,#081426f2);box-shadow:0 18px 48px #0002,inset 0 1px #ffffff0a}
+.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step{border-radius:17px}
+.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{border-color:#66b6ff82;box-shadow:0 22px 55px #0005,0 0 32px #1677ff17}
+.service-icon{border-radius:14px;box-shadow:0 0 24px #1677ff15,inset 0 1px #ffffff18}
+.price-card.featured{border-color:#4e9dff88;box-shadow:0 0 40px #1677ff12,inset 0 1px #ffffff12}
+.price{color:#a8d7ff}
+.project-panel{min-height:205px}
+.rank{border-radius:999px}
+.review-panel{border-style:solid;border-color:#8dbbff30;border-radius:16px;background:linear-gradient(145deg,#10213ddd,#081426f2)}
+.community{border-radius:19px;border-color:#69acff60;box-shadow:0 20px 55px #0004}
+.contact-form{border-radius:17px}
+footer{background:#030814;border-top-color:#8dbbff25}
+.footer-row{padding-block:5px}
+@media(max-width:1050px){.nav{gap:14px}.links{gap:12px}.nav-actions .btn{padding:0 10px;font-size:.7rem}.hero-grid{gap:28px}}
+@media(max-width:900px){.nav{height:74px}.links{gap:10px;font-size:.72rem}.nav-actions .btn{min-height:38px}.nav-portal{display:none}}
+@media(max-width:760px){
+ .nav{height:70px;gap:10px}.links{top:70px;gap:0;padding:10px 18px 18px;background:#050b18f8}
+ .links.open{display:flex}.links>a{padding:12px 4px}
+ .nav-more{padding:12px 4px}.more-menu{position:static;min-width:0;margin-top:9px;border-radius:10px;box-shadow:none;background:#0a1a30}
+ .nav-actions{margin-left:auto}.nav-actions .btn{min-height:39px;padding:0 11px;font-size:.69rem}.nav-portal{display:none}
+ .hero{padding:68px 0 54px}.hero-grid{grid-template-columns:1fr;gap:0}.hero-art{min-height:390px;margin-top:25px}.art-ring{width:300px}
+ .section{padding:76px 0}.trust-row{grid-template-columns:1fr;gap:15px}.trust-item{padding:0}
+}
+@media(max-width:420px){.brand{font-size:.92rem;gap:8px}.brand-mark{width:37px;height:37px}.nav-actions .nav-cta{padding:0 9px;font-size:.64rem}.menu{width:39px;height:39px}}
+@media(prefers-reduced-motion:reduce){.art-core,.art-ring{animation:none!important}.more-menu a,.nav-more>summary{transition:none}}
+
 </style>
 </head>
 <body>
@@ -161,13 +233,13 @@ body:before{position:fixed;inset:0;z-index:0;pointer-events:none;content:"";opac
 <header class="header"><div class="wrap nav">
 <a class="brand" href="#home" aria-label="Botsy Studios home"><span class="brand-mark">B</span><span class="brand-name">Botsy <span>Studios</span></span></a>
 <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
-<nav class="links" id="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#reviews">Reviews</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="dashboard.html">Client Portal ↗</a><a href="staff-dashboard.html">Staff Dashboard ↗</a></nav>
-<a class="btn primary nav-cta" href="dashboard.html">Client Portal ↗</a>
+<nav class="links" id="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#portfolio">Portfolio</a><a href="#faq">FAQ</a><details class="nav-more"><summary>More <span aria-hidden="true">⌄</span></summary><div class="more-menu"><a href="#about">About Botsy</a><a href="#team">Ownership Team</a><a href="#reviews">Reviews</a><a href="#process">How it works</a><a href="#community">Community</a><a href="#contact">Contact</a><a href="staff-dashboard.html">Staff Dashboard ↗</a></div></details></nav>
+<div class="nav-actions"><a class="btn secondary nav-portal" href="dashboard.html">Client Portal ↗</a><a class="btn primary nav-cta" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Join Discord ↗</a></div>
 </div></header>
 <main>
 <section class="hero" id="home"><canvas class="cinema-particles" id="cinema-particles" aria-hidden="true"></canvas><div class="wrap hero-grid">
-<div><div class="eyebrow">Independent digital development studio</div><h1><span class="gradient">Your vision.<br>Our creation.</span></h1><p class="hero-copy">We turn ideas into polished digital experiences. From custom Discord bots to complete server systems, Botsy Studios builds solutions designed around your community.</p><div class="actions"><a class="btn primary" href="#contact">Start a project ↗</a><a class="btn secondary" href="dashboard.html">Client Portal ↗</a><a class="btn secondary" href="#services">Explore what we do ↓</a></div><div class="micro"><span>CREATIVE THINKING</span><span>CUSTOM BUILDS</span><span>COMMUNITY FIRST</span></div></div>
-<div class="hero-art" role="img" aria-label="Botsy Studios digital systems artwork"><div class="art-grid"></div><div class="art-ring"></div><div class="float-tag tag-one">✦ BUILT TO FIT</div><div class="float-tag tag-two">⌘ CUSTOM SYSTEMS</div><div class="art-core"><div class="core-head"><span>BOTSY / STUDIO</span><span class="live">CREATING</span></div><div class="core-symbol">B.</div><h3>Built around your vision.</h3><p>Thoughtful design. Custom technology. Systems that work for your community.</p><div class="core-bars"><i></i><i></i><i></i></div></div></div>
+<div><div class="eyebrow">Build · Design · Automate · Scale</div><h1><span class="gradient">Your vision.<br>Our creation.</span></h1><p class="hero-copy">Custom Discord bots, server systems and digital experiences — designed around your community, built around your requirements.</p><div class="actions"><a class="btn primary" href="https://discord.gg/PQXCjgDQSe" target="_blank" rel="noopener noreferrer">Start a project ↗</a><a class="btn secondary" href="#services">Explore services ↓</a></div><div class="micro"><span>BUILT FROM SCRATCH</span><span>MADE FOR COMMUNITIES</span><span>DIRECT SUPPORT</span></div></div>
+<div class="hero-art" role="img" aria-label="Botsy Studios digital systems artwork"><div class="art-grid"></div><div class="art-ring"></div><div class="float-tag tag-one">✦ BUILT TO FIT</div><div class="float-tag tag-two">⌘ CUSTOM SYSTEMS</div><div class="art-core"><div class="core-head"><span>BOTSY / STUDIO</span><span class="live">ONLINE</span></div><div class="core-symbol">B.</div><h3>Ideas into systems.</h3><p>Custom bots. Smarter workflows. Better communities.</p><div class="core-bars"><i></i><i></i><i></i></div></div></div>
 </div></section>
 <div class="trust-strip"><div class="wrap trust-row"><div class="trust-item"><strong>Made around your needs</strong><span>No one-size-fits-all builds</span></div><div class="trust-item"><strong>Clear project communication</strong><span>Requirements and updates in your ticket</span></div><div class="trust-item"><strong>Built for communities</strong><span>Practical systems with purpose</span></div></div></div>
 <section class="section alt" id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">What we do</div><h2>Technology that works the way you do.</h2><p>Practical, custom-built services for Discord communities and businesses looking to create a better digital experience.</p></div>
