@@ -224,6 +224,50 @@ footer{background:#030814;border-top-color:#8dbbff25}
 @media(max-width:420px){.brand{font-size:.92rem;gap:8px}.brand-mark{width:37px;height:37px}.nav-actions .nav-cta{padding:0 9px;font-size:.64rem}.menu{width:39px;height:39px}}
 @media(prefers-reduced-motion:reduce){.art-core,.art-ring{animation:none!important}.more-menu a,.nav-more>summary{transition:none}}
 
+
+
+/* UNIFIED BOTSY DESIGN SYSTEM — one visual language across every section */
+:root{
+ --bg:#030712;--surface:#0a172b;--surface-raised:#10213a;--line:#8dbbff2a;
+ --blue:#287dff;--cyan:#5be1ff;--text:#f4f7ff;--muted:#a4b4cc;
+ --card-radius:17px;--panel-shadow:0 18px 48px #0004,inset 0 1px #ffffff0b;
+}
+html{scroll-padding-top:96px}
+body{color:var(--text)}
+.header{border-bottom:1px solid var(--line)}
+.section-head h2,.contact-copy h2{color:var(--text);text-wrap:balance}
+.section-head p,.about-copy,.contact-copy p{color:var(--muted)}
+.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step,.review-panel,.contact-form{
+ border:1px solid var(--line);border-radius:var(--card-radius);box-shadow:var(--panel-shadow);
+}
+.service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step,.review-panel,.contact-form{
+ background:linear-gradient(145deg,#10213ddd,#081426f2);
+}
+.service-main:hover,.service-mini:hover,.price-card:hover,.project-panel:hover,.leader-card:hover,.process-step:hover{
+ border-color:#70bdff88;box-shadow:0 24px 60px #0006,0 0 30px #1677ff1b;
+}
+.service-icon{background:linear-gradient(145deg,#1677ff2b,#0c2d55);border-color:#5caaff55;color:#b9ddff}
+.price-card.featured{background:radial-gradient(ellipse at 100% 0,#1677ff2b,transparent 58%),linear-gradient(145deg,#122b4b,#081426)}
+.price,.rank,.project-label,.service-kicker{color:#9bceff}
+.review-panel{border-style:solid;color:var(--muted)}
+.review-panel strong,.review-rating strong,.review-top strong{color:#f4f7ff}
+.value{border-radius:12px;background:#0b1b30a8}
+.faq-list details{border-color:var(--line)}
+.faq-list summary{color:#edf5ff}
+.community{background:radial-gradient(ellipse at 100% 0,#1677ff35,transparent 54%),linear-gradient(110deg,#102748,#091426)}
+.contact-form{background:linear-gradient(145deg,#10213ddd,#081426f2)}
+.field input,.field select,.field textarea{border-color:#8dbbff38;background:#050f20;color:var(--text)}
+footer{border-top:1px solid var(--line)}
+.btn{border-radius:10px}
+@media(max-width:760px){
+ .section{padding:76px 0}
+ .service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step,.review-panel,.contact-form{border-radius:15px}
+ .hero .actions .btn{width:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ .service-main,.service-mini,.price-card,.project-panel,.leader-card,.process-step{transition:none!important}
+}
+
 </style>
 </head>
 <body>
