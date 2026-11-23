@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Botsy Studios Website Assistant</title>
+  <desc id="desc">The Botsy Studios blue B logo above the words Website Assistant.</desc>
+  <defs>
+    <linearGradient id="bg" x1="66" y1="20" x2="448" y2="492" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102344"/><stop offset="1" stop-color="#050d1c"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="148" y1="50" x2="365" y2="286" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#68a8ff"/><stop offset=".65" stop-color="#2368f0"/><stop offset="1" stop-color="#1741a2"/>
+    </linearGradient>
+    <filter id="glow" x="78" y="12" width="356" height="356" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="17"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="165" r="146" fill="#2878ff" fill-opacity=".2" filter="url(#glow)"/>
+  <rect x="132" y="40" width="248" height="248" rx="72" fill="url(#mark)"/>
+  <rect x="133.5" y="41.5" width="245" height="245" rx="70.5" fill="none" stroke="#a8d5ff" stroke-opacity=".42" stroke-width="3"/>
+  <text x="256" y="226" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="157" font-weight="800" text-anchor="middle">B</text>
+  <path d="M82 329h348" stroke="#3d8bff" stroke-opacity=".48" stroke-width="2"/>
+  <text x="256" y="382" fill="#f4f8ff" font-family="Arial,Helvetica,sans-serif" font-size="36" font-weight="750" letter-spacing="-.8" text-anchor="middle">Website Assistant</text>
+  <text x="256" y="424" fill="#83baff" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="4" text-anchor="middle">BOTSY STUDIOS</text>
+</svg>

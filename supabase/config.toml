@@ -1,4 +1,4 @@
-project_id = "YOUR_SUPABASE_PROJECT_ID"
+project_id = "bfmveczotjuwuefxyire"
 
-[functions.inventor-order-event]
+[functions.inventor-client-review]
 verify_jwt = false

@@ -1,5 +1,13 @@
 # Botsy Studios Client Portal — setup
 
+## Website reviews from Inventor `/review`
+
+The new website reads published review rows from `public.website_reviews`. The Inventor flow draft calls the `inventor-client-review` Edge Function with the existing `BOTSY_WEBHOOK_SECRET`; the function uses the server-side service role key and publishes only validated review fields. The public site has read-only access to published fields under RLS.
+
+The local setup draft is `website-reviews.setup.sql`, and the function source is `functions/inventor-client-review/index.ts`. Apply the SQL and deploy the function before deploying Inventor flow version 8. Set the same `BOTSY_WEBHOOK_SECRET` value on the Inventor branch and Supabase Edge Functions. Never add the service-role key or webhook secret to browser files.
+
+The Inventor flow is saved as a draft and has not been deployed. The website files and Supabase setup have not been deployed or applied to the live project.
+
 This repository contains the secure database and webhook scaffold. GitHub Pages is static hosting; Supabase provides authentication, database access and the trusted webhook endpoint.
 
 ## 1. Create a Supabase project
